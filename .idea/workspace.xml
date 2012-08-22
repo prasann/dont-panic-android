@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="05080d7f-1302-4227-abcf-ec2750ac6726" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/thoughtworks/R.java" afterPath="$PROJECT_DIR$/gen/com/thoughtworks/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/buttons.xml" afterPath="$PROJECT_DIR$/res/drawable/buttons.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/home.xml" afterPath="$PROJECT_DIR$/res/layout/home.xml" />
     </list>
     <ignored path="dont-panic-android.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -103,7 +100,7 @@
       <file leaf-file-name="home.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/layout/home.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="35" selection-start="664" selection-end="664" vertical-scroll-proportion="0.4857143">
+            <state line="11" column="43" selection-start="623" selection-end="623" vertical-scroll-proportion="0.44523808">
               <folding />
             </state>
           </provider>
@@ -502,7 +499,7 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified some styling" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -515,6 +512,7 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="Modified some styling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -577,7 +575,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/home.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="35" selection-start="664" selection-end="664" vertical-scroll-proportion="0.4857143">
+        <state line="11" column="43" selection-start="623" selection-end="623" vertical-scroll-proportion="0.44523808">
           <folding />
         </state>
       </provider>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <TextView android:text="@string/list_by"
+              android:layout_height="wrap_content"
+              android:layout_width="fill_parent"/>
+    <ListView
+            android:id="@+id/country_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    </ListView>
+
+    <Button
+            android:id="@+id/synchronize"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:text="@string/view_all"
+            android:layout_margin="5dp"
+            android:layout_alignParentBottom="true"/>
+
+</LinearLayout>

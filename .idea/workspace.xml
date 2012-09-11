@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05080d7f-1302-4227-abcf-ec2750ac6726" name="Default" comment="Added List View">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values-v11/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values-v14/styles.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/thoughtworks/R.java" afterPath="$PROJECT_DIR$/gen/com/thoughtworks/R.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/country_listing.xml" afterPath="$PROJECT_DIR$/res/layout/country_listing.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/home.xml" afterPath="$PROJECT_DIR$/res/layout/home.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/styles.xml" afterPath="$PROJECT_DIR$/res/values/styles.xml" />
     </list>
     <ignored path="dont-panic-android.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,40 +69,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <file leaf-file-name="home.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/home.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="44" selection-start="534" selection-end="534" vertical-scroll-proportion="0.37592137">
+            <state line="11" column="24" selection-start="604" selection-end="604" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
+      <file leaf-file-name="country_listing.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/res/layout/country_listing.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="67" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
+            <state line="15" column="24" selection-start="577" selection-end="577" vertical-scroll-proportion="0.60714287">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="colors.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="12" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
+            <state line="4" column="32" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/HomeActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="6" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -119,10 +111,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/layout/buttons.xml" />
         <option value="$PROJECT_DIR$/res/layout/button_bg.xml" />
         <option value="$PROJECT_DIR$/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/res/layout/home.xml" />
         <option value="$PROJECT_DIR$/res/drawable/buttons.xml" />
         <option value="$PROJECT_DIR$/proguard-project.txt" />
         <option value="$PROJECT_DIR$/res/layout/view_by.xml" />
@@ -130,10 +120,13 @@
         <option value="$PROJECT_DIR$/res/layout/country_list.xml" />
         <option value="$PROJECT_DIR$/src/com/thoughtworks/ListByCountryActivity.java" />
         <option value="$PROJECT_DIR$/src/com/thoughtworks/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/res/values-v14/styles.xml" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/res/values-v11/styles.xml" />
+        <option value="$PROJECT_DIR$/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/res/layout/country_listing.xml" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/res/layout/home.xml" />
       </list>
     </option>
   </component>
@@ -192,52 +185,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dont-panic-android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dont-panic-android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dont-panic-android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dont-panic-android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dont-panic-android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dont-panic-android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -259,6 +206,10 @@
     <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res/values-v14" />
+      <recent name="$PROJECT_DIR$/res/values-v11" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.thoughtworks" />
     </key>
@@ -526,13 +477,6 @@
         <state line="20" column="25" selection-start="542" selection-end="542" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/android-sdk-mac_x86/platforms/android-16/data/res/values/themes.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="464" column="38" selection-start="31285" selection-end="31285" vertical-scroll-proportion="0.32816538">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/android-sdk-mac_x86/platforms/android-16/data/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1521" column="34" selection-start="68535" selection-end="68535" vertical-scroll-proportion="63.530712">
@@ -542,7 +486,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/thoughtworks/HomeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="6" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0">
+        <state line="16" column="6" selection-start="432" selection-end="432" vertical-scroll-proportion="0.83809525">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -551,21 +495,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="12" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
+        <state line="3" column="12" selection-start="104" selection-end="104" vertical-scroll-proportion="0.12142857">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
+    <entry file="file://$USER_HOME$/android-sdk-mac_x86/platforms/android-16/data/res/values/themes.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="67" selection-start="79" selection-end="79" vertical-scroll-proportion="0.0">
+        <state line="1186" column="17" selection-start="76754" selection-end="76754" vertical-scroll-proportion="0.31695333">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="44" selection-start="534" selection-end="534" vertical-scroll-proportion="0.37592137">
+        <state line="6" column="45" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values-v11/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="10" selection-start="90" selection-end="90" vertical-scroll-proportion="0.08095238">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values-v14/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="12" selection-start="127" selection-end="127" vertical-scroll-proportion="0.16190477">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="42" selection-start="54" selection-end="54" vertical-scroll-proportion="0.04047619">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="32" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/home.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="24" selection-start="604" selection-end="604" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/country_listing.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="24" selection-start="577" selection-end="577" vertical-scroll-proportion="0.60714287">
           <folding />
         </state>
       </provider>

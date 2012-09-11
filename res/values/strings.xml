@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Don\'t Panic</string>
     <string name="view_all">View All Offices</string>
-    <string name="list_by">List By</string>
+    <string name="list_by">Countries</string>
 </resources>

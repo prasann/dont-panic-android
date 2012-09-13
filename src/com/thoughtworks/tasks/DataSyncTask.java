@@ -7,22 +7,28 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static java.net.HttpURLConnection.HTTP_OK;
+
 public class DataSyncTask extends AsyncTask<String, String, String> {
 
     private String TAG = "DataSyncTask";
+    private String EMPTY_STRING = "";
 
     @Override
     protected String doInBackground(String... uri) {
         String json = getDataFromURL(uri[0]);
-
         return json;
     }
 
     private String getDataFromURL(String spec) {
-        String response = "";
+        String response = EMPTY_STRING;
         try {
             URL url = new URL(spec);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            if (urlConnection.getResponseCode() != HTTP_OK) {
+                Log.e(TAG, "Connection Establishment Failed");
+                return EMPTY_STRING;
+            }
             try {
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 response = readStream(in);

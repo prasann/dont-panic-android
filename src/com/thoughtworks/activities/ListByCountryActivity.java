@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -39,7 +40,7 @@ public class ListByCountryActivity extends Activity {
         syncButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 if (isNetworkAvailable()) {
-                    new DataSyncTask().execute("http://dont-panic.herokuapp.com/data.json");
+                    new DataSyncTask(context).execute("http://dont-panic.herokuapp.com/data.json");
                 } else {
                     Toast toast = Toast.makeText(context, "You need data connection to Sync content", 10);
                     toast.show();

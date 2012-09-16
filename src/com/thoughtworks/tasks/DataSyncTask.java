@@ -1,11 +1,15 @@
 package com.thoughtworks.tasks;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import com.thoughtworks.database.DBHelper;
+import com.thoughtworks.processors.JSONParser;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
@@ -13,10 +17,17 @@ public class DataSyncTask extends AsyncTask<String, String, String> {
 
     private String TAG = "DataSyncTask";
     private String EMPTY_STRING = "";
+    private Context context;
+
+    public DataSyncTask(Context context) {
+        this.context = context;
+    }
 
     @Override
     protected String doInBackground(String... uri) {
         String json = getDataFromURL(uri[0]);
+        Map<String, Object> objectMap = JSONParser.parse(json);
+        DBHelper.saveObjectMap(context, objectMap);
         return json;
     }
 

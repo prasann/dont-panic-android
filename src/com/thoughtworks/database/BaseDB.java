@@ -13,16 +13,11 @@ import java.io.InputStreamReader;
 
 public class BaseDB {
     private final String DATABASE_NAME = "dont_panic";
-    private final String DATABASE_TABLE;
     private final int DATABASE_VERSION = 1;
     private final String MIGRATION_FILE = "migration" + DATABASE_VERSION + ".sql";
 
     private DatabaseHelper mDbHelper;
     public SQLiteDatabase mDb;
-
-    public BaseDB(String DATABASE_TABLE) {
-        this.DATABASE_TABLE = DATABASE_TABLE;
-    }
 
     private class DatabaseHelper extends SQLiteOpenHelper {
         private final Context myContext;
@@ -30,14 +25,17 @@ public class BaseDB {
         DatabaseHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
             myContext = context;
+            Log.v("DBH","Inside Constructor");
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
+            Log.v("DBH","Inside oNCreate");
             InputStream iStream;
             try {
                 iStream = myContext.getAssets().open(MIGRATION_FILE);
                 String queries = string(iStream);
+                Log.v("DBH",queries);
                 runMigrations(db, queries);
             } catch (IOException e) {
                 throw new Error("Create Database Error", e);
@@ -48,12 +46,20 @@ public class BaseDB {
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             Log.w(DATABASE_NAME, "Upgrading database from version " + oldVersion + " to "
                     + newVersion + ", which will destroy all old data");
-            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
+            dropAllTables(db);
+            onCreate(db);
+        }
+
+        private void dropAllTables(SQLiteDatabase db) {
+            db.execSQL("PRAGMA writable_schema = 1;");
+            db.execSQL("delete from sqlite_master where type = 'table';");
+            db.execSQL("PRAGMA writable_schema = 0;");
         }
 
         private void runMigrations(SQLiteDatabase db, String myQueries) {
             String[] queries = myQueries.split(";");
             for (String query : queries) {
+                Log.v("DBH-Exec query",query);
                 db.execSQL(query);
             }
         }

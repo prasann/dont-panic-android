@@ -25,4 +25,14 @@ public class JSONAttributes {
         public static String ID = "id";
         public static String NAME = "name";
     }
+
+    public static class Administrator {
+        public static String ITEMS = "administrators";
+        public static String ITEM = "administrator";
+        public static String ID = "id";
+        public static String NAME = "name";
+        public static String PHONE_NUMBERS = "phone_numbers";
+        public static String EMAIL = "email";
+        public static String OFFICE_ID = "office_id";
+    }
 }

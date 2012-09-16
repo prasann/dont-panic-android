@@ -1,5 +1,7 @@
 package com.thoughtworks.processors;
 
+import android.util.Log;
+import com.thoughtworks.models.Administrator;
 import com.thoughtworks.models.City;
 import com.thoughtworks.models.Company;
 import com.thoughtworks.models.Country;
@@ -13,9 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.thoughtworks.utils.Constants.OBJ_MAP_CITIES;
-import static com.thoughtworks.utils.Constants.OBJ_MAP_COMPANIES;
-import static com.thoughtworks.utils.Constants.OBJ_MAP_COUNTRIES;
+import static com.thoughtworks.utils.Constants.*;
 
 public class JSONParser {
 
@@ -26,6 +26,7 @@ public class JSONParser {
             objectMap.put(OBJ_MAP_COUNTRIES, countries(jsonObject));
             objectMap.put(OBJ_MAP_CITIES, cities(jsonObject));
             objectMap.put(OBJ_MAP_COMPANIES, companies(jsonObject));
+            objectMap.put(OBJ_MAP_ADMINISTRATORS, administrators(jsonObject));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,6 +70,22 @@ public class JSONParser {
                     (String) companyAttrs.get(JSONAttributes.Company.NAME)));
         }
         return companies;
+    }
+
+    private static List<Administrator> administrators(JSONObject jsonObject) throws JSONException {
+        JSONArray administratorsJSON = (JSONArray) jsonObject.get(JSONAttributes.Administrator.ITEMS);
+        List<Administrator> administrators = new ArrayList<Administrator>();
+        for (int i = 0; i < administratorsJSON.length(); i++) {
+            JSONObject administratorsJSONObject = administratorsJSON.getJSONObject(i);
+            JSONObject administratorsAttrs = (JSONObject) administratorsJSONObject.get(JSONAttributes.Administrator.ITEM);
+            administrators.add(new Administrator((Integer) administratorsAttrs.get(JSONAttributes.Administrator.ID),
+                    (String) administratorsAttrs.get(JSONAttributes.Administrator.NAME),
+                    (String) administratorsAttrs.get(JSONAttributes.Administrator.PHONE_NUMBERS),
+                    (String) administratorsAttrs.get(JSONAttributes.Administrator.EMAIL),
+                    (Integer) administratorsAttrs.get(JSONAttributes.Administrator.OFFICE_ID)));
+        }
+        Log.v("JSONP",String.valueOf(administrators.size()));
+        return administrators;
     }
 
 }

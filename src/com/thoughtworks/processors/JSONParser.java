@@ -1,6 +1,7 @@
 package com.thoughtworks.processors;
 
 import com.thoughtworks.models.City;
+import com.thoughtworks.models.Company;
 import com.thoughtworks.models.Country;
 import com.thoughtworks.utils.JSONAttributes;
 import org.json.JSONArray;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.thoughtworks.utils.Constants.OBJ_MAP_CITIES;
+import static com.thoughtworks.utils.Constants.OBJ_MAP_COMPANIES;
 import static com.thoughtworks.utils.Constants.OBJ_MAP_COUNTRIES;
 
 public class JSONParser {
@@ -23,6 +25,7 @@ public class JSONParser {
             JSONObject jsonObject = new JSONObject(json);
             objectMap.put(OBJ_MAP_COUNTRIES, countries(jsonObject));
             objectMap.put(OBJ_MAP_CITIES, cities(jsonObject));
+            objectMap.put(OBJ_MAP_COMPANIES, companies(jsonObject));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -54,6 +57,18 @@ public class JSONParser {
                     (Integer) cityAttrs.get(JSONAttributes.City.COUNTRY_ID)));
         }
         return cities;
+    }
+
+    private static List<Company> companies(JSONObject jsonObject) throws JSONException {
+        JSONArray companiesJSON = (JSONArray) jsonObject.get(JSONAttributes.Company.ITEMS);
+        List<Company> companies = new ArrayList<Company>();
+        for (int i = 0; i < companiesJSON.length(); i++) {
+            JSONObject companyJSONObject = companiesJSON.getJSONObject(i);
+            JSONObject companyAttrs = (JSONObject) companyJSONObject.get(JSONAttributes.Company.ITEM);
+            companies.add(new Company((Integer) companyAttrs.get(JSONAttributes.Company.ID),
+                    (String) companyAttrs.get(JSONAttributes.Company.NAME)));
+        }
+        return companies;
     }
 
 }

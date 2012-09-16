@@ -24,7 +24,8 @@ public class Company {
         return name;
     }
 
-    public static void save(SQLiteDatabase db, List<Company> companies) {
+    public static void reCreate(SQLiteDatabase db, List<Company> companies) {
+        db.delete(TABLE_NAME, null, null);
         DatabaseUtils.InsertHelper insertHelper = new DatabaseUtils.InsertHelper(db, TABLE_NAME);
         int id_index = insertHelper.getColumnIndex("_id");
         int name_index = insertHelper.getColumnIndex("name");

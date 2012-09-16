@@ -1,6 +1,7 @@
 package com.thoughtworks.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -25,17 +26,14 @@ public class BaseDB {
         DatabaseHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
             myContext = context;
-            Log.v("DBH","Inside Constructor");
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            Log.v("DBH","Inside oNCreate");
             InputStream iStream;
             try {
                 iStream = myContext.getAssets().open(MIGRATION_FILE);
                 String queries = string(iStream);
-                Log.v("DBH",queries);
                 runMigrations(db, queries);
             } catch (IOException e) {
                 throw new Error("Create Database Error", e);
@@ -50,7 +48,7 @@ public class BaseDB {
             onCreate(db);
         }
 
-        private void dropAllTables(SQLiteDatabase db) {
+        public void dropAllTables(SQLiteDatabase db) {
             db.execSQL("PRAGMA writable_schema = 1;");
             db.execSQL("delete from sqlite_master where type = 'table';");
             db.execSQL("PRAGMA writable_schema = 0;");
@@ -59,7 +57,6 @@ public class BaseDB {
         private void runMigrations(SQLiteDatabase db, String myQueries) {
             String[] queries = myQueries.split(";");
             for (String query : queries) {
-                Log.v("DBH-Exec query",query);
                 db.execSQL(query);
             }
         }

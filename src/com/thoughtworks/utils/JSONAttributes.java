@@ -35,4 +35,33 @@ public class JSONAttributes {
         public static String EMAIL = "email";
         public static String OFFICE_ID = "office_id";
     }
+
+    public static class Office {
+        public static String ITEMS = "offices";
+        public static String ITEM = "office";
+        public static String ID = "id";
+        public static String NAME = "name";
+        public static String ADDRESS = "address";
+        public static String LONGITUDE = "longitude";
+        public static String LATITUDE = "latitude";
+        public static String PHONE_NUMBERS = "phone_numbers";
+        public static String EMAIL = "email";
+        public static String CITY_ID = "city_id";
+        public static String COMPANY_ID = "company_id";
+    }
+
+    public static class Place {
+        public static String ITEMS = "places";
+        public static String ITEM = "place";
+        public static String ID = "id";
+        public static String NAME = "name";
+        public static String DESCRIPTION = "description";
+        public static String ADDRESS = "address";
+        public static String LONGITUDE = "longitude";
+        public static String LATITUDE = "latitude";
+        public static String PHONE_NUMBERS = "phone_numbers";
+        public static String EMAIL = "email";
+        public static String CITY_ID = "city_id";
+        public static String PLACE_TYPE_ID = "place_type_id";
+    }
 }

@@ -31,7 +31,8 @@ public class Country {
         return code;
     }
 
-    public static void save(SQLiteDatabase db, List<Country> countries) {
+    public static void reCreate(SQLiteDatabase db, List<Country> countries) {
+        db.delete(TABLE_NAME, null, null);
         InsertHelper insertHelper = new InsertHelper(db, TABLE_NAME);
         int id_index = insertHelper.getColumnIndex("_id");
         int name_index = insertHelper.getColumnIndex("name");

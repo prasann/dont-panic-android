@@ -42,7 +42,8 @@ public class Administrator {
         return officeId;
     }
 
-    public static void save(SQLiteDatabase db, List<Administrator> administrators) {
+    public static void reCreate(SQLiteDatabase db, List<Administrator> administrators) {
+        db.delete(TABLE_NAME, null, null);
         DatabaseUtils.InsertHelper insertHelper = new DatabaseUtils.InsertHelper(db, TABLE_NAME);
         int id_index = insertHelper.getColumnIndex("_id");
         int name_index = insertHelper.getColumnIndex("name");

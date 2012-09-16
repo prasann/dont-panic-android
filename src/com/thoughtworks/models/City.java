@@ -2,6 +2,7 @@ package com.thoughtworks.models;
 
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.List;
 
@@ -36,7 +37,8 @@ public class City {
         return countryId;
     }
 
-    public static void save(SQLiteDatabase db, List<City> cities) {
+    public static void reCreate(SQLiteDatabase db, List<City> cities) {
+        db.delete(TABLE_NAME, null, null);
         DatabaseUtils.InsertHelper insertHelper = new DatabaseUtils.InsertHelper(db, TABLE_NAME);
         int id_index = insertHelper.getColumnIndex("_id");
         int name_index = insertHelper.getColumnIndex("name");

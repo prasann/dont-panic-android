@@ -1,10 +1,7 @@
 package com.thoughtworks.database;
 
 import android.content.Context;
-import com.thoughtworks.models.Administrator;
-import com.thoughtworks.models.City;
-import com.thoughtworks.models.Company;
-import com.thoughtworks.models.Country;
+import com.thoughtworks.models.*;
 
 import java.util.List;
 import java.util.Map;
@@ -16,10 +13,12 @@ public class DBHelper {
     public static void saveObjectMap(Context context, Map<String, Object> objectMap) {
         BaseDB db = new BaseDB();
         db.open(context);
-        Country.save(db.mDb, (List<Country>) objectMap.get(OBJ_MAP_COUNTRIES));
-        City.save(db.mDb, (List<City>) objectMap.get(OBJ_MAP_CITIES));
-        Company.save(db.mDb, (List<Company>) objectMap.get(OBJ_MAP_COMPANIES));
-        Administrator.save(db.mDb, (List<Administrator>) objectMap.get(OBJ_MAP_ADMINISTRATORS));
+        Country.reCreate(db.mDb, (List<Country>) objectMap.get(OBJ_MAP_COUNTRIES));
+        City.reCreate(db.mDb, (List<City>) objectMap.get(OBJ_MAP_CITIES));
+        Company.reCreate(db.mDb, (List<Company>) objectMap.get(OBJ_MAP_COMPANIES));
+        Administrator.reCreate(db.mDb, (List<Administrator>) objectMap.get(OBJ_MAP_ADMINISTRATORS));
+        Office.reCreate(db.mDb, (List<Office>) objectMap.get(OBJ_MAP_OFFICES));
+        Place.reCreate(db.mDb, (List<Place>) objectMap.get(OBJ_MAP_PLACES));
         db.close();
     }
 

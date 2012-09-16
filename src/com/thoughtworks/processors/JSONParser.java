@@ -1,10 +1,7 @@
 package com.thoughtworks.processors;
 
 import android.util.Log;
-import com.thoughtworks.models.Administrator;
-import com.thoughtworks.models.City;
-import com.thoughtworks.models.Company;
-import com.thoughtworks.models.Country;
+import com.thoughtworks.models.*;
 import com.thoughtworks.utils.JSONAttributes;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,19 +18,22 @@ public class JSONParser {
 
     public static Map<String, Object> parse(String json) {
         Map<String, Object> objectMap = new HashMap<String, Object>();
+        JSONParser jsonParser = new JSONParser();
         try {
             JSONObject jsonObject = new JSONObject(json);
-            objectMap.put(OBJ_MAP_COUNTRIES, countries(jsonObject));
-            objectMap.put(OBJ_MAP_CITIES, cities(jsonObject));
-            objectMap.put(OBJ_MAP_COMPANIES, companies(jsonObject));
-            objectMap.put(OBJ_MAP_ADMINISTRATORS, administrators(jsonObject));
+            objectMap.put(OBJ_MAP_COUNTRIES, jsonParser.countries(jsonObject));
+            objectMap.put(OBJ_MAP_CITIES, jsonParser.cities(jsonObject));
+            objectMap.put(OBJ_MAP_COMPANIES, jsonParser.companies(jsonObject));
+            objectMap.put(OBJ_MAP_ADMINISTRATORS, jsonParser.administrators(jsonObject));
+            objectMap.put(OBJ_MAP_OFFICES, jsonParser.offices(jsonObject));
+            objectMap.put(OBJ_MAP_PLACES, jsonParser.places(jsonObject));
         } catch (Exception e) {
             e.printStackTrace();
         }
         return objectMap;
     }
 
-    private static List<Country> countries(JSONObject jsonObject) throws JSONException {
+    private List<Country> countries(JSONObject jsonObject) throws JSONException {
         JSONArray countriesJSON = (JSONArray) jsonObject.get(JSONAttributes.Country.ITEMS);
         List<Country> countries = new ArrayList<Country>();
         for (int i = 0; i < countriesJSON.length(); i++) {
@@ -46,7 +46,7 @@ public class JSONParser {
         return countries;
     }
 
-    private static List<City> cities(JSONObject jsonObject) throws JSONException {
+    private List<City> cities(JSONObject jsonObject) throws JSONException {
         JSONArray citiesJSON = (JSONArray) jsonObject.get(JSONAttributes.City.ITEMS);
         List<City> cities = new ArrayList<City>();
         for (int i = 0; i < citiesJSON.length(); i++) {
@@ -60,7 +60,7 @@ public class JSONParser {
         return cities;
     }
 
-    private static List<Company> companies(JSONObject jsonObject) throws JSONException {
+    private List<Company> companies(JSONObject jsonObject) throws JSONException {
         JSONArray companiesJSON = (JSONArray) jsonObject.get(JSONAttributes.Company.ITEMS);
         List<Company> companies = new ArrayList<Company>();
         for (int i = 0; i < companiesJSON.length(); i++) {
@@ -72,7 +72,7 @@ public class JSONParser {
         return companies;
     }
 
-    private static List<Administrator> administrators(JSONObject jsonObject) throws JSONException {
+    private List<Administrator> administrators(JSONObject jsonObject) throws JSONException {
         JSONArray administratorsJSON = (JSONArray) jsonObject.get(JSONAttributes.Administrator.ITEMS);
         List<Administrator> administrators = new ArrayList<Administrator>();
         for (int i = 0; i < administratorsJSON.length(); i++) {
@@ -84,8 +84,55 @@ public class JSONParser {
                     (String) administratorsAttrs.get(JSONAttributes.Administrator.EMAIL),
                     (Integer) administratorsAttrs.get(JSONAttributes.Administrator.OFFICE_ID)));
         }
-        Log.v("JSONP",String.valueOf(administrators.size()));
         return administrators;
     }
 
+    private List<Office> offices(JSONObject jsonObject) throws JSONException {
+        JSONArray officesJSON = (JSONArray) jsonObject.get(JSONAttributes.Office.ITEMS);
+        List<Office> offices = new ArrayList<Office>();
+        for (int i = 0; i < officesJSON.length(); i++) {
+            JSONObject officesJSONObject = officesJSON.getJSONObject(i);
+            JSONObject officesAttrs = (JSONObject) officesJSONObject.get(JSONAttributes.Office.ITEM);
+            offices.add(new Office((Integer) officesAttrs.get(JSONAttributes.Office.ID),
+                    (String) officesAttrs.get(JSONAttributes.Office.NAME),
+                    (String) officesAttrs.get(JSONAttributes.Office.ADDRESS),
+                    toDouble(officesAttrs, JSONAttributes.Office.LONGITUDE),
+                    toDouble(officesAttrs, JSONAttributes.Office.LATITUDE),
+                    (String) officesAttrs.get(JSONAttributes.Office.PHONE_NUMBERS),
+                    (String) officesAttrs.get(JSONAttributes.Office.EMAIL),
+                    (Integer) officesAttrs.get(JSONAttributes.Office.CITY_ID),
+                    (Integer) officesAttrs.get(JSONAttributes.Office.COMPANY_ID)));
+        }
+        return offices;
+    }
+
+    private List<Place> places(JSONObject jsonObject) throws JSONException {
+        JSONArray officesJSON = (JSONArray) jsonObject.get(JSONAttributes.Place.ITEMS);
+        List<Place> places = new ArrayList<Place>();
+        for (int i = 0; i < officesJSON.length(); i++) {
+            JSONObject placesJSONObject = officesJSON.getJSONObject(i);
+            JSONObject placesAttrs = (JSONObject) placesJSONObject.get(JSONAttributes.Place.ITEM);
+            places.add(new Place((Integer) placesAttrs.get(JSONAttributes.Place.ID),
+                    (String) placesAttrs.get(JSONAttributes.Place.NAME),
+                    (String) placesAttrs.get(JSONAttributes.Place.DESCRIPTION),
+                    (String) placesAttrs.get(JSONAttributes.Place.ADDRESS),
+                    toDouble(placesAttrs, JSONAttributes.Place.LONGITUDE),
+                    toDouble(placesAttrs, JSONAttributes.Place.LATITUDE),
+                    (String) placesAttrs.get(JSONAttributes.Place.PHONE_NUMBERS),
+                    (String) placesAttrs.get(JSONAttributes.Place.EMAIL),
+                    (Integer) placesAttrs.get(JSONAttributes.Place.PLACE_TYPE_ID),
+                    (Integer) placesAttrs.get(JSONAttributes.Place.CITY_ID)));
+        }
+        return places;
+    }
+
+    private Double toDouble(JSONObject attrs, String value) throws JSONException {
+        Double val = new Double("0");
+        try {
+            val = (Double) attrs.get(value);
+        } catch (Exception e) {
+            Log.w("Double Conversion", "Error while converting : " + value);
+        }
+        return val;
+    }
 }

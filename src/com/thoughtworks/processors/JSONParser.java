@@ -48,7 +48,7 @@ public class JSONParser {
         for (int i = 0; i < citiesJSON.length(); i++) {
             JSONObject cityJSONObject = citiesJSON.getJSONObject(i);
             JSONObject cityAttrs = (JSONObject) cityJSONObject.get(JSONAttributes.City.ITEM);
-            cities.add(new City((Integer) cityAttrs.get(JSONAttributes.Country.ID),
+            cities.add(new City((Integer) cityAttrs.get(JSONAttributes.City.ID),
                     (String) cityAttrs.get(JSONAttributes.City.NAME),
                     (String) cityAttrs.get(JSONAttributes.City.CODE),
                     (Integer) cityAttrs.get(JSONAttributes.City.COUNTRY_ID)));

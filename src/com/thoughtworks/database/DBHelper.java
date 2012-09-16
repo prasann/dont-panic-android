@@ -2,13 +2,13 @@ package com.thoughtworks.database;
 
 import android.content.Context;
 import com.thoughtworks.models.City;
+import com.thoughtworks.models.Company;
 import com.thoughtworks.models.Country;
 
 import java.util.List;
 import java.util.Map;
 
-import static com.thoughtworks.utils.Constants.OBJ_MAP_CITIES;
-import static com.thoughtworks.utils.Constants.OBJ_MAP_COUNTRIES;
+import static com.thoughtworks.utils.Constants.*;
 
 public class DBHelper {
 
@@ -17,6 +17,7 @@ public class DBHelper {
         db.open(context);
         Country.save(db.mDb, (List<Country>) objectMap.get(OBJ_MAP_COUNTRIES));
         City.save(db.mDb, (List<City>) objectMap.get(OBJ_MAP_CITIES));
+        Company.save(db.mDb, (List<Company>) objectMap.get(OBJ_MAP_COMPANIES));
         db.close();
     }
 

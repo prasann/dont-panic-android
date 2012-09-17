@@ -1,23 +1,28 @@
 package com.thoughtworks.activities;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Context;
-import android.content.Intent;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.*;
 import com.thoughtworks.R;
+import com.thoughtworks.adapters.CountryListAdapter;
+import com.thoughtworks.database.DBHelper;
+import com.thoughtworks.models.Country;
 import com.thoughtworks.tasks.DataSyncTask;
 
-public class ListByCountryActivity extends Activity {
-    private ListView listView;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class ListByCountryActivity extends ListActivity {
     private Button syncButton;
+    private CountryListAdapter countryListAdapter;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,11 +33,9 @@ public class ListByCountryActivity extends Activity {
     }
 
     private void listView() {
-        String[] values = new String[]{"India", "America", "Australia"};
-        listView = (ListView) findViewById(R.id.country_list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
-        listView.setAdapter(adapter);
+        List<Country> countryList = getAllCountries();
+        countryListAdapter = new CountryListAdapter(this, R.layout.row_country, countryList);
+        this.setListAdapter(countryListAdapter);
     }
 
     private void syncButton(final Context context) {
@@ -54,6 +57,17 @@ public class ListByCountryActivity extends Activity {
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
+    }
+
+    private List<Country> getAllCountries() {
+        List<Country> countryList = new ArrayList<Country>();
+        DBHelper dbHelper = new DBHelper();
+        Cursor cursor = dbHelper.getAllCountries(this);
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            countryList.add(new Country(cursor));
+        }
+        cursor.close();
+        return countryList;
     }
 
 }

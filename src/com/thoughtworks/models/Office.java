@@ -2,9 +2,7 @@ package com.thoughtworks.models;
 
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class Office {

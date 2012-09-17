@@ -1,6 +1,7 @@
 package com.thoughtworks.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import com.thoughtworks.models.*;
 
 import java.util.List;
@@ -22,5 +23,10 @@ public class DBHelper {
         db.close();
     }
 
+    public Cursor getAllCountries(Context context) {
+        BaseDB db = new BaseDB();
+        db.open(context);
+        return Country.getAllCountries(db.mDb);
+    }
 
 }

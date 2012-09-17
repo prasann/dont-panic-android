@@ -5,7 +5,7 @@
               android:weightSum="10"
               android:orientation="vertical">
     <ListView
-            android:id="@+id/country_list"
+            android:id="@+id/android:list"
             android:layout_marginTop="20dip"
             android:layout_width="match_parent"
             android:layout_weight="9"

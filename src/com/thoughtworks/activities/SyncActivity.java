@@ -3,7 +3,9 @@ package com.thoughtworks.activities;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Handler;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 import com.thoughtworks.tasks.DataSyncTask;
 
@@ -29,7 +31,6 @@ public class SyncActivity {
         new Thread(new Runnable() {
             public void run() {
                 DataSyncTask dataSyncTask = new DataSyncTask(context);
-                setMessage("Sync data...");
                 String json = downloadData(dataSyncTask);
                 if (json == null) return;
                 progressAndMessage(33, "Parsing information...");

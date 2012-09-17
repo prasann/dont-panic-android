@@ -4,7 +4,12 @@
               android:layout_height="fill_parent"
               android:weightSum="10"
               android:orientation="vertical">
-
+    <TextView
+            android:id="@+id/country_name"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            />
     <ListView
             android:id="@+id/android:list"
             android:layout_marginTop="20dip"
@@ -12,13 +17,4 @@
             android:layout_weight="9"
             android:layout_height="0dip">
     </ListView>
-
-    <Button
-            android:id="@+id/synchronize"
-            android:layout_height="0dip"
-            android:layout_width="fill_parent"
-            android:text="@string/sync_all"
-            android:layout_weight="1"
-            android:layout_alignParentBottom="true"/>
-
 </LinearLayout>

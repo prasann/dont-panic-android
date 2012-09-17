@@ -2,6 +2,7 @@ package com.thoughtworks.activities;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -13,15 +14,17 @@ import com.thoughtworks.adapters.CountryListAdapter;
 import com.thoughtworks.database.DBHelper;
 import com.thoughtworks.models.Country;
 import com.thoughtworks.tasks.DataSyncTask;
+import com.thoughtworks.utils.Constants;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import static com.thoughtworks.utils.Constants.COUNTRY_ID;
+import static com.thoughtworks.utils.Constants.COUNTRY_NAME;
 
 public class ListByCountryActivity extends ListActivity {
     private Button syncButton;
-    private CountryListAdapter countryListAdapter;
+    private CountryListAdapter customListAdapter;
 
 
     @Override
@@ -32,10 +35,22 @@ public class ListByCountryActivity extends ListActivity {
         syncButton(this);
     }
 
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Country country = (Country) this.getListAdapter().getItem(position);
+        Intent intent = new Intent(v.getContext(), ListByCityActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(COUNTRY_ID, String.valueOf(country.getId()));
+        bundle.putString(COUNTRY_NAME, String.valueOf(country.getName()));
+        intent.putExtras(bundle);
+        startActivityForResult(intent, RESULT_FIRST_USER);
+    }
+
     private void listView() {
         List<Country> countryList = getAllCountries();
-        countryListAdapter = new CountryListAdapter(this, R.layout.row_country, countryList);
-        this.setListAdapter(countryListAdapter);
+        customListAdapter = new CountryListAdapter(this, R.layout.row_country, countryList);
+        this.setListAdapter(customListAdapter);
     }
 
     private void syncButton(final Context context) {

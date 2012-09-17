@@ -13,7 +13,7 @@ import java.util.Map;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
-public class DataSyncTask extends AsyncTask<String, String, String> {
+public class DataSyncTask{
 
     private String TAG = "DataSyncTask";
     private String EMPTY_STRING = "";
@@ -23,18 +23,29 @@ public class DataSyncTask extends AsyncTask<String, String, String> {
         this.context = context;
     }
 
-    @Override
-    protected String doInBackground(String... uri) {
-        String json = getDataFromURL(uri[0]);
-        Map<String, Object> objectMap = JSONParser.parse(json);
-        DBHelper.saveObjectMap(context, objectMap);
-        return json;
+    public String downloadData(String uri) {
+        return getDataFromURL(uri);
     }
 
-    private String getDataFromURL(String spec) {
+    public Map<String, Object> parseJSON(String json) {
+        return JSONParser.parse(json);
+    }
+
+    public int saveData(Map<String, Object> objectMap) {
+        int status = 0;
+        try {
+            DBHelper.saveObjectMap(context, objectMap);
+            status = 1;
+        } catch (Exception e) {
+            Log.e(TAG, "Saving data failed : " + e.getMessage());
+        }
+        return status;
+    }
+
+    private String getDataFromURL(String uri) {
         String response = EMPTY_STRING;
         try {
-            URL url = new URL(spec);
+            URL url = new URL(uri);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             if (urlConnection.getResponseCode() != HTTP_OK) {
                 Log.e(TAG, "Connection Establishment Failed");
@@ -44,13 +55,13 @@ public class DataSyncTask extends AsyncTask<String, String, String> {
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 response = readStream(in);
             } catch (IOException e) {
-                Log.e(TAG, "IOException while reading :" + spec);
+                Log.e(TAG, "IOException while reading :" + uri);
                 throw new Error(e);
             } finally {
                 urlConnection.disconnect();
             }
         } catch (Exception e) {
-            Log.e(TAG, "MalformedURLException :" + spec);
+            Log.e(TAG, "MalformedURLException :" + uri);
             throw new Error(e);
         }
         return response;
@@ -79,8 +90,4 @@ public class DataSyncTask extends AsyncTask<String, String, String> {
         return content.toString();
     }
 
-    @Override
-    protected void onPostExecute(String result) {
-        super.onPostExecute(result);
-    }
 }

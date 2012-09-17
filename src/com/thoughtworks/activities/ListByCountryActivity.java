@@ -58,9 +58,10 @@ public class ListByCountryActivity extends ListActivity {
         syncButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 if (isNetworkAvailable()) {
-                    new DataSyncTask(context).execute("http://dont-panic.herokuapp.com/data.json");
+//                    new DataSyncTask(context).execute("http://dont-panic.herokuapp.com/data.json");
+                    new SyncActivity(context).sync();
                 } else {
-                    Toast toast = Toast.makeText(context, "You need data connection to Sync content", 10);
+                    Toast toast = Toast.makeText(context, "You need data connection to Sync content", 15);
                     toast.show();
                 }
             }

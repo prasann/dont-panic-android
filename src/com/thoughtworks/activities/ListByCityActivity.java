@@ -1,18 +1,24 @@
 package com.thoughtworks.activities;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import com.thoughtworks.R;
 import com.thoughtworks.adapters.CityListAdapter;
 import com.thoughtworks.database.DBHelper;
 import com.thoughtworks.models.City;
+import com.thoughtworks.models.Country;
 import com.thoughtworks.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.thoughtworks.utils.Constants.*;
 
 public class ListByCityActivity extends ListActivity {
     private CityListAdapter cityListAdapter;
@@ -27,6 +33,18 @@ public class ListByCityActivity extends ListActivity {
         setContentView(R.layout.city_listing);
         setCountryName(countryName);
         listView(countryId);
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        City city = (City) this.getListAdapter().getItem(position);
+        Intent intent = new Intent(v.getContext(), ListByOfficeActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(CITY_ID, String.valueOf(city.getId()));
+        bundle.putString(CITY_NAME, String.valueOf(city.getName()));
+        intent.putExtras(bundle);
+        startActivityForResult(intent, RESULT_FIRST_USER);
     }
 
     private void setCountryName(String countryName) {

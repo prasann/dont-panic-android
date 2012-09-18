@@ -27,13 +27,19 @@ public class DBHelper {
     public Cursor getAllCountries(Context context) {
         BaseDB db = new BaseDB();
         db.open(context);
-        return Country.getAllCountries(db.mDb);
+        return Country.getAll(db.mDb);
     }
 
     public Cursor getAllCities(Context context, int countryId) {
         BaseDB db = new BaseDB();
         db.open(context);
-        return City.getAllCities(db.mDb, countryId);
+        return City.getAll(db.mDb, countryId);
+    }
+
+    public Cursor getAllOffices(Context context, int cityId) {
+        BaseDB db = new BaseDB();
+        db.open(context);
+        return Office.getAll(db.mDb, cityId);
     }
 
 }

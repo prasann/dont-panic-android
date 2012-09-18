@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Company {
     private static final String TABLE_NAME = "companies";
+    public static final String NAME = "name";
 
     private int id;
     private String name;
@@ -28,7 +29,7 @@ public class Company {
         db.delete(TABLE_NAME, null, null);
         DatabaseUtils.InsertHelper insertHelper = new DatabaseUtils.InsertHelper(db, TABLE_NAME);
         int id_index = insertHelper.getColumnIndex("_id");
-        int name_index = insertHelper.getColumnIndex("name");
+        int name_index = insertHelper.getColumnIndex(NAME);
         for (Company company : companies) {
             insertHelper.prepareForInsert();
             insertHelper.bind(id_index, company.getId());

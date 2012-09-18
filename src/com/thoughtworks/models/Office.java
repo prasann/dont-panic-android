@@ -1,5 +1,6 @@
 package com.thoughtworks.models;
 
+import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -8,6 +9,9 @@ import java.util.List;
 public class Office {
 
     private static final String TABLE_NAME = "offices";
+    public static final String ID = "_id";
+    public static final String NAME = "name";
+    public static final String CITY_ID = "city_id";
 
     private int id;
     private String name;
@@ -71,14 +75,14 @@ public class Office {
     public static void reCreate(SQLiteDatabase db, List<Office> offices) {
         db.delete(TABLE_NAME, null, null);
         DatabaseUtils.InsertHelper insertHelper = new DatabaseUtils.InsertHelper(db, TABLE_NAME);
-        int id_index = insertHelper.getColumnIndex("_id");
-        int name_index = insertHelper.getColumnIndex("name");
+        int id_index = insertHelper.getColumnIndex(ID);
+        int name_index = insertHelper.getColumnIndex(NAME);
         int address_index = insertHelper.getColumnIndex("address");
         int lat_index = insertHelper.getColumnIndex("latitude");
         int long_index = insertHelper.getColumnIndex("longitude");
         int phone_num_index = insertHelper.getColumnIndex("phone_numbers");
         int email_index = insertHelper.getColumnIndex("email");
-        int cit_id_index = insertHelper.getColumnIndex("city_id");
+        int cit_id_index = insertHelper.getColumnIndex(CITY_ID);
         int comp_id_index = insertHelper.getColumnIndex("company_id");
         for (Office office : offices) {
             insertHelper.prepareForInsert();
@@ -95,4 +99,8 @@ public class Office {
         }
     }
 
+    public static Cursor getAll(SQLiteDatabase mDb, int cityId) {
+        String query = "select * from offices,companies where offices.company_id = companies._id and offices.city_id = ?";
+        return mDb.rawQuery(query, new String[]{String.valueOf(cityId)});
+    }
 }

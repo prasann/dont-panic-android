@@ -56,7 +56,7 @@ public class Country {
         }
     }
 
-    public static Cursor getAllCountries(SQLiteDatabase mDb) {
+    public static Cursor getAll(SQLiteDatabase mDb) {
         return mDb.query(TABLE_NAME, new String[]{ID, NAME, CODE}, null, null, null, null, NAME);
     }
 }

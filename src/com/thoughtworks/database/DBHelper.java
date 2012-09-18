@@ -20,6 +20,7 @@ public class DBHelper {
         Administrator.reCreate(db.mDb, (List<Administrator>) objectMap.get(OBJ_MAP_ADMINISTRATORS));
         Office.reCreate(db.mDb, (List<Office>) objectMap.get(OBJ_MAP_OFFICES));
         Place.reCreate(db.mDb, (List<Place>) objectMap.get(OBJ_MAP_PLACES));
+        PlaceType.reCreate(db.mDb, (List<PlaceType>) objectMap.get(OBJ_MAP_PLACE_TYPES));
         db.close();
     }
 

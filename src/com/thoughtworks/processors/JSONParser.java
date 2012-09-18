@@ -27,6 +27,7 @@ public class JSONParser {
             objectMap.put(OBJ_MAP_ADMINISTRATORS, jsonParser.administrators(jsonObject));
             objectMap.put(OBJ_MAP_OFFICES, jsonParser.offices(jsonObject));
             objectMap.put(OBJ_MAP_PLACES, jsonParser.places(jsonObject));
+            objectMap.put(OBJ_MAP_PLACE_TYPES, jsonParser.placeTypes(jsonObject));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,6 +68,17 @@ public class JSONParser {
                     (String) companyAttrs.get(JSONAttributes.Company.NAME)));
         }
         return companies;
+    }
+
+    private List<PlaceType> placeTypes(JSONObject jsonObject) throws JSONException {
+        JSONArray placeTypeJSON = (JSONArray) jsonObject.get(JSONAttributes.PlaceType.ITEMS);
+        List<PlaceType> plcaeTypes = new ArrayList<PlaceType>();
+        for (int i = 0; i < placeTypeJSON.length(); i++) {
+            JSONObject companyAttrs = placeTypeJSON.getJSONObject(i);
+            plcaeTypes.add(new PlaceType((Integer) companyAttrs.get(JSONAttributes.PlaceType.ID),
+                    (String) companyAttrs.get(JSONAttributes.PlaceType.NAME)));
+        }
+        return plcaeTypes;
     }
 
     private List<Administrator> administrators(JSONObject jsonObject) throws JSONException {

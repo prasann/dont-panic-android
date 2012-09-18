@@ -4,7 +4,6 @@ public class JSONAttributes {
 
     public static class Country {
         public static String ITEMS = "countries";
-        public static String ITEM = "country";
         public static String ID = "id";
         public static String NAME = "name";
         public static String CODE = "code";
@@ -12,7 +11,6 @@ public class JSONAttributes {
 
     public static class City {
         public static String ITEMS = "cities";
-        public static String ITEM = "city";
         public static String ID = "id";
         public static String NAME = "name";
         public static String CODE = "code";
@@ -21,14 +19,18 @@ public class JSONAttributes {
 
     public static class Company {
         public static String ITEMS = "companies";
-        public static String ITEM = "company";
+        public static String ID = "id";
+        public static String NAME = "name";
+    }
+
+    public static class PlaceType {
+        public static String ITEMS = "place_types";
         public static String ID = "id";
         public static String NAME = "name";
     }
 
     public static class Administrator {
         public static String ITEMS = "administrators";
-        public static String ITEM = "administrator";
         public static String ID = "id";
         public static String NAME = "name";
         public static String PHONE_NUMBERS = "phone_numbers";
@@ -38,7 +40,6 @@ public class JSONAttributes {
 
     public static class Office {
         public static String ITEMS = "offices";
-        public static String ITEM = "office";
         public static String ID = "id";
         public static String NAME = "name";
         public static String ADDRESS = "address";
@@ -52,7 +53,6 @@ public class JSONAttributes {
 
     public static class Place {
         public static String ITEMS = "places";
-        public static String ITEM = "place";
         public static String ID = "id";
         public static String NAME = "name";
         public static String DESCRIPTION = "description";

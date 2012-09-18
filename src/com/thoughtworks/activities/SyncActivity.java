@@ -53,17 +53,8 @@ public class SyncActivity {
         });
     }
 
-    private void setMessage(final String message) {
-        progressBarHandler.post(new Runnable() {
-            public void run() {
-                progressBar.setTitle(message);
-            }
-        });
-    }
-
     private String downloadData(DataSyncTask dataSyncTask) {
         String json = dataSyncTask.downloadData("http://dont-panic.herokuapp.com/data.json");
-
         if (json.equals("")) {
             error();
             return null;

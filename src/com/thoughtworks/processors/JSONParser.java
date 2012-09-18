@@ -37,8 +37,7 @@ public class JSONParser {
         JSONArray countriesJSON = (JSONArray) jsonObject.get(JSONAttributes.Country.ITEMS);
         List<Country> countries = new ArrayList<Country>();
         for (int i = 0; i < countriesJSON.length(); i++) {
-            JSONObject countryJSONObject = countriesJSON.getJSONObject(i);
-            JSONObject countryAttrs = (JSONObject) countryJSONObject.get(JSONAttributes.Country.ITEM);
+            JSONObject countryAttrs = countriesJSON.getJSONObject(i);
             countries.add(new Country((Integer) countryAttrs.get(JSONAttributes.Country.ID),
                     (String) countryAttrs.get(JSONAttributes.Country.NAME),
                     (String) countryAttrs.get(JSONAttributes.Country.CODE)));
@@ -50,8 +49,7 @@ public class JSONParser {
         JSONArray citiesJSON = (JSONArray) jsonObject.get(JSONAttributes.City.ITEMS);
         List<City> cities = new ArrayList<City>();
         for (int i = 0; i < citiesJSON.length(); i++) {
-            JSONObject cityJSONObject = citiesJSON.getJSONObject(i);
-            JSONObject cityAttrs = (JSONObject) cityJSONObject.get(JSONAttributes.City.ITEM);
+            JSONObject cityAttrs = citiesJSON.getJSONObject(i);
             cities.add(new City((Integer) cityAttrs.get(JSONAttributes.City.ID),
                     (String) cityAttrs.get(JSONAttributes.City.NAME),
                     (String) cityAttrs.get(JSONAttributes.City.CODE),
@@ -64,8 +62,7 @@ public class JSONParser {
         JSONArray companiesJSON = (JSONArray) jsonObject.get(JSONAttributes.Company.ITEMS);
         List<Company> companies = new ArrayList<Company>();
         for (int i = 0; i < companiesJSON.length(); i++) {
-            JSONObject companyJSONObject = companiesJSON.getJSONObject(i);
-            JSONObject companyAttrs = (JSONObject) companyJSONObject.get(JSONAttributes.Company.ITEM);
+            JSONObject companyAttrs = companiesJSON.getJSONObject(i);
             companies.add(new Company((Integer) companyAttrs.get(JSONAttributes.Company.ID),
                     (String) companyAttrs.get(JSONAttributes.Company.NAME)));
         }
@@ -76,8 +73,7 @@ public class JSONParser {
         JSONArray administratorsJSON = (JSONArray) jsonObject.get(JSONAttributes.Administrator.ITEMS);
         List<Administrator> administrators = new ArrayList<Administrator>();
         for (int i = 0; i < administratorsJSON.length(); i++) {
-            JSONObject administratorsJSONObject = administratorsJSON.getJSONObject(i);
-            JSONObject administratorsAttrs = (JSONObject) administratorsJSONObject.get(JSONAttributes.Administrator.ITEM);
+            JSONObject administratorsAttrs = administratorsJSON.getJSONObject(i);
             administrators.add(new Administrator((Integer) administratorsAttrs.get(JSONAttributes.Administrator.ID),
                     (String) administratorsAttrs.get(JSONAttributes.Administrator.NAME),
                     (String) administratorsAttrs.get(JSONAttributes.Administrator.PHONE_NUMBERS),
@@ -91,8 +87,7 @@ public class JSONParser {
         JSONArray officesJSON = (JSONArray) jsonObject.get(JSONAttributes.Office.ITEMS);
         List<Office> offices = new ArrayList<Office>();
         for (int i = 0; i < officesJSON.length(); i++) {
-            JSONObject officesJSONObject = officesJSON.getJSONObject(i);
-            JSONObject officesAttrs = (JSONObject) officesJSONObject.get(JSONAttributes.Office.ITEM);
+            JSONObject officesAttrs = officesJSON.getJSONObject(i);
             offices.add(new Office((Integer) officesAttrs.get(JSONAttributes.Office.ID),
                     (String) officesAttrs.get(JSONAttributes.Office.NAME),
                     (String) officesAttrs.get(JSONAttributes.Office.ADDRESS),
@@ -110,8 +105,7 @@ public class JSONParser {
         JSONArray officesJSON = (JSONArray) jsonObject.get(JSONAttributes.Place.ITEMS);
         List<Place> places = new ArrayList<Place>();
         for (int i = 0; i < officesJSON.length(); i++) {
-            JSONObject placesJSONObject = officesJSON.getJSONObject(i);
-            JSONObject placesAttrs = (JSONObject) placesJSONObject.get(JSONAttributes.Place.ITEM);
+            JSONObject placesAttrs = officesJSON.getJSONObject(i);
             places.add(new Place((Integer) placesAttrs.get(JSONAttributes.Place.ID),
                     (String) placesAttrs.get(JSONAttributes.Place.NAME),
                     (String) placesAttrs.get(JSONAttributes.Place.DESCRIPTION),

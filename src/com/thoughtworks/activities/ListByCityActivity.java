@@ -45,6 +45,7 @@ public class ListByCityActivity extends ListActivity {
         bundle.putString(CITY_NAME, String.valueOf(city.getName()));
         intent.putExtras(bundle);
         startActivityForResult(intent, RESULT_FIRST_USER);
+        overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
     }
 
     private void setCountryName(String countryName) {

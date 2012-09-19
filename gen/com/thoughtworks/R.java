@@ -8,28 +8,34 @@
 package com.thoughtworks;
 
 public final class R {
+    public static final class anim {
+        public static final int push_right_in=0x7f040000;
+        public static final int push_right_out=0x7f040001;
+    }
     public static final class attr {
     }
     public static final class color {
-        public static final int black=0x7f040001;
-        public static final int white=0x7f040000;
+        public static final int black=0x7f050001;
+        public static final int white=0x7f050000;
     }
     public static final class drawable {
         public static final int buttons=0x7f020000;
         public static final int ic_launcher=0x7f020001;
+        public static final int ic_menu_sync=0x7f020002;
     }
     public static final class id {
-        public static final int city_name=0x7f070003;
-        public static final int country_name=0x7f070000;
-        public static final int row_city_id=0x7f070004;
-        public static final int row_city_name=0x7f070005;
-        public static final int row_company_name=0x7f07000a;
-        public static final int row_country_id=0x7f070006;
-        public static final int row_country_name=0x7f070007;
-        public static final int row_office_id=0x7f070008;
-        public static final int row_office_name=0x7f070009;
-        public static final int synchronize=0x7f070001;
-        public static final int view_all=0x7f070002;
+        public static final int city_name=0x7f090003;
+        public static final int country_name=0x7f090000;
+        public static final int row_city_id=0x7f090004;
+        public static final int row_city_name=0x7f090005;
+        public static final int row_company_name=0x7f09000a;
+        public static final int row_country_id=0x7f090006;
+        public static final int row_country_name=0x7f090007;
+        public static final int row_office_id=0x7f090008;
+        public static final int row_office_name=0x7f090009;
+        public static final int sync_menu=0x7f09000b;
+        public static final int synchronize=0x7f090001;
+        public static final int view_all=0x7f090002;
     }
     public static final class layout {
         public static final int city_listing=0x7f030000;
@@ -40,13 +46,16 @@ public final class R {
         public static final int row_country=0x7f030005;
         public static final int row_office=0x7f030006;
     }
+    public static final class menu {
+        public static final int sync_menu=0x7f080000;
+    }
     public static final class string {
-        public static final int app_name=0x7f050000;
-        public static final int list_by=0x7f050003;
-        public static final int sync_all=0x7f050002;
-        public static final int view_all=0x7f050001;
+        public static final int app_name=0x7f060000;
+        public static final int list_by=0x7f060003;
+        public static final int sync_all=0x7f060002;
+        public static final int view_all=0x7f060001;
     }
     public static final class style {
-        public static final int MyTheme=0x7f060000;
+        public static final int MyTheme=0x7f070000;
     }
 }

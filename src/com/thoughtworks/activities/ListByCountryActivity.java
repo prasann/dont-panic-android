@@ -45,6 +45,7 @@ public class ListByCountryActivity extends ListActivity {
         bundle.putString(COUNTRY_NAME, String.valueOf(country.getName()));
         intent.putExtras(bundle);
         startActivityForResult(intent, RESULT_FIRST_USER);
+        overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
     }
 
     private void listView() {

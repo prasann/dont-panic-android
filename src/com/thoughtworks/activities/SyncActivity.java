@@ -27,6 +27,7 @@ public class SyncActivity {
         progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressBar.setProgress(0);
         progressBar.setMax(100);
+        progressBar.setTitle("Sync data...");
         progressBar.show();
         new Thread(new Runnable() {
             public void run() {

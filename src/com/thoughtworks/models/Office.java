@@ -18,6 +18,8 @@ public class Office {
     public static final String PHONE_NUMBERS = "phone_numbers";
     public static final String EMAIL = "email";
     public static final String COMPANY_ID = "company_id";
+    public static final String OFFICE_NAME_ALIAS = "office_name";
+    public static final String COMPANY_NAME_ALIAS = "company_name";
 
     private int id;
     private String name;
@@ -116,7 +118,8 @@ public class Office {
     }
 
     public static Cursor getAll(SQLiteDatabase mDb, int cityId) {
-        String query = "select * from offices,companies where offices.company_id = companies._id and offices.city_id = ?";
+        String query = "select offices._id,offices.name as " + OFFICE_NAME_ALIAS + ",companies.name as " + COMPANY_NAME_ALIAS +
+                " from offices,companies where offices.company_id = companies._id and offices.city_id = ?";
         return mDb.rawQuery(query, new String[]{String.valueOf(cityId)});
     }
 

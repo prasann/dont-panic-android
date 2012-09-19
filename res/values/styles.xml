@@ -1,4 +1,11 @@
 <resources>
     <style name="MyTheme" parent="android:Theme.Light.NoTitleBar">
+        <item name="android:textViewStyle">@style/MyListTextAppearanceMedium</item>
+    </style>
+    <style name="listView" parent="@android:style/Widget.ListView.White">
+    </style>
+    <style name="MyListTextAppearanceMedium">
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

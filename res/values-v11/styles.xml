@@ -1,4 +1,9 @@
 <resources>
     <style name="MyTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:textViewStyle">@style/MyListTextAppearanceMedium</item>
+    </style>
+    <style name="MyListTextAppearanceMedium">
+        <item name="android:textAppearance">?android:attr/textAppearanceMediumInverse</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

@@ -1,7 +1,6 @@
 package com.thoughtworks.viewmodels;
 
 import android.database.Cursor;
-import com.thoughtworks.models.Company;
 import com.thoughtworks.models.Office;
 
 public class OfficeInfo {
@@ -12,8 +11,8 @@ public class OfficeInfo {
 
     public OfficeInfo(Cursor cursor) {
         this.officeId = cursor.getInt(cursor.getColumnIndex(Office.ID));
-        this.officeName = cursor.getString(cursor.getColumnIndex(Office.NAME));
-        this.companyName = cursor.getString(cursor.getColumnIndex(Company.NAME));
+        this.officeName = cursor.getString(cursor.getColumnIndex(Office.OFFICE_NAME_ALIAS));
+        this.companyName = cursor.getString(cursor.getColumnIndex(Office.COMPANY_NAME_ALIAS));
     }
 
     public int getOfficeId() {

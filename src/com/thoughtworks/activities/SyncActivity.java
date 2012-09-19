@@ -3,9 +3,6 @@ package com.thoughtworks.activities;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Handler;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 import com.thoughtworks.tasks.DataSyncTask;
 

@@ -10,17 +10,12 @@ import android.widget.TextView;
 import com.thoughtworks.R;
 import com.thoughtworks.adapters.OfficeListAdapter;
 import com.thoughtworks.database.DBHelper;
-import com.thoughtworks.models.City;
-import com.thoughtworks.models.Country;
-import com.thoughtworks.models.Office;
 import com.thoughtworks.utils.Constants;
 import com.thoughtworks.viewmodels.OfficeInfo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.thoughtworks.utils.Constants.COUNTRY_ID;
-import static com.thoughtworks.utils.Constants.COUNTRY_NAME;
 import static com.thoughtworks.utils.Constants.OFFICE_ID;
 
 public class ListByOfficeActivity extends ListActivity {

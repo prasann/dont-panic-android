@@ -12,6 +12,12 @@ public class Office {
     public static final String ID = "_id";
     public static final String NAME = "name";
     public static final String CITY_ID = "city_id";
+    public static final String ADDRESS = "address";
+    public static final String LATITUDE = "latitude";
+    public static final String LONGITUDE = "longitude";
+    public static final String PHONE_NUMBERS = "phone_numbers";
+    public static final String EMAIL = "email";
+    public static final String COMPANY_ID = "company_id";
 
     private int id;
     private String name;
@@ -34,6 +40,16 @@ public class Office {
         this.email = email;
         this.cityId = cityId;
         this.companyId = companyId;
+    }
+
+    public Office(Cursor cursor) {
+        this.id = cursor.getInt(cursor.getColumnIndex(ID));
+        this.name = cursor.getString(cursor.getColumnIndex(NAME));
+        this.address = cursor.getString(cursor.getColumnIndex(ADDRESS));
+        this.latitude = cursor.getDouble(cursor.getColumnIndex(LATITUDE));
+        this.longitude = cursor.getDouble(cursor.getColumnIndex(LONGITUDE));
+        this.phoneNumber = cursor.getString(cursor.getColumnIndex(PHONE_NUMBERS));
+        this.email = cursor.getString(cursor.getColumnIndex(EMAIL));
     }
 
     public int getId() {
@@ -77,13 +93,13 @@ public class Office {
         DatabaseUtils.InsertHelper insertHelper = new DatabaseUtils.InsertHelper(db, TABLE_NAME);
         int id_index = insertHelper.getColumnIndex(ID);
         int name_index = insertHelper.getColumnIndex(NAME);
-        int address_index = insertHelper.getColumnIndex("address");
-        int lat_index = insertHelper.getColumnIndex("latitude");
-        int long_index = insertHelper.getColumnIndex("longitude");
-        int phone_num_index = insertHelper.getColumnIndex("phone_numbers");
-        int email_index = insertHelper.getColumnIndex("email");
+        int address_index = insertHelper.getColumnIndex(ADDRESS);
+        int lat_index = insertHelper.getColumnIndex(LATITUDE);
+        int long_index = insertHelper.getColumnIndex(LONGITUDE);
+        int phone_num_index = insertHelper.getColumnIndex(PHONE_NUMBERS);
+        int email_index = insertHelper.getColumnIndex(EMAIL);
         int cit_id_index = insertHelper.getColumnIndex(CITY_ID);
-        int comp_id_index = insertHelper.getColumnIndex("company_id");
+        int comp_id_index = insertHelper.getColumnIndex(COMPANY_ID);
         for (Office office : offices) {
             insertHelper.prepareForInsert();
             insertHelper.bind(id_index, office.getId());
@@ -103,4 +119,9 @@ public class Office {
         String query = "select * from offices,companies where offices.company_id = companies._id and offices.city_id = ?";
         return mDb.rawQuery(query, new String[]{String.valueOf(cityId)});
     }
+
+    public static Cursor getOffice(SQLiteDatabase mDb, int officeId) {
+        return mDb.query(TABLE_NAME, new String[]{ID, NAME, ADDRESS, LATITUDE, LONGITUDE, PHONE_NUMBERS, EMAIL}, ID + " = " + officeId, null, null, null, NAME);
+    }
+
 }

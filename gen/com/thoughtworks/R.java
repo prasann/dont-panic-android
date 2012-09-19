@@ -26,14 +26,20 @@ public final class R {
     public static final class id {
         public static final int city_name=0x7f090003;
         public static final int country_name=0x7f090000;
-        public static final int row_city_id=0x7f090004;
-        public static final int row_city_name=0x7f090005;
-        public static final int row_company_name=0x7f09000a;
-        public static final int row_country_id=0x7f090006;
-        public static final int row_country_name=0x7f090007;
-        public static final int row_office_id=0x7f090008;
-        public static final int row_office_name=0x7f090009;
-        public static final int sync_menu=0x7f09000b;
+        public static final int row_city_id=0x7f09000a;
+        public static final int row_city_name=0x7f09000b;
+        public static final int row_company_name=0x7f090010;
+        public static final int row_country_id=0x7f09000c;
+        public static final int row_country_name=0x7f09000d;
+        public static final int row_office_id=0x7f09000e;
+        public static final int row_office_name=0x7f09000f;
+        public static final int sum_off_address=0x7f090005;
+        public static final int sum_off_email=0x7f090009;
+        public static final int sum_off_latitude=0x7f090007;
+        public static final int sum_off_longitude=0x7f090006;
+        public static final int sum_off_name=0x7f090004;
+        public static final int sum_off_phone=0x7f090008;
+        public static final int sync_menu=0x7f090011;
         public static final int synchronize=0x7f090001;
         public static final int view_all=0x7f090002;
     }
@@ -42,9 +48,10 @@ public final class R {
         public static final int country_listing=0x7f030001;
         public static final int home=0x7f030002;
         public static final int office_listing=0x7f030003;
-        public static final int row_city=0x7f030004;
-        public static final int row_country=0x7f030005;
-        public static final int row_office=0x7f030006;
+        public static final int office_summary=0x7f030004;
+        public static final int row_city=0x7f030005;
+        public static final int row_country=0x7f030006;
+        public static final int row_office=0x7f030007;
     }
     public static final class menu {
         public static final int sync_menu=0x7f080000;

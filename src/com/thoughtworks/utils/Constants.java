@@ -14,4 +14,5 @@ public class Constants {
     public static final String COUNTRY_NAME = "country_name";
     public static final String CITY_ID = "city_id";
     public static final String CITY_NAME = "city_name";
+    public static final String OFFICE_ID = "office_id";
 }

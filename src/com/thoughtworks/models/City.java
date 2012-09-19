@@ -67,6 +67,5 @@ public class City {
 
     public static Cursor getAll(SQLiteDatabase mDb, int countryId) {
         return mDb.query(TABLE_NAME, new String[]{ID, NAME, CODE}, COUNTRY_ID + " = " + countryId, null, null, null, NAME);
-
     }
 }

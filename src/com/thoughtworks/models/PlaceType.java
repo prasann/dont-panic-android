@@ -1,5 +1,6 @@
 package com.thoughtworks.models;
 
+import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -18,6 +19,11 @@ public class PlaceType {
     public PlaceType(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public PlaceType(Cursor cursor) {
+        this.id = cursor.getInt(cursor.getColumnIndex(Country.ID));
+        this.name = cursor.getString(cursor.getColumnIndex(Country.NAME));
     }
 
     public int getId() {
@@ -39,5 +45,9 @@ public class PlaceType {
             insertHelper.bind(name_index, placeType.getName());
             insertHelper.execute();
         }
+    }
+
+    public static Cursor getAll(SQLiteDatabase mDb) {
+        return mDb.query(TABLE_NAME, new String[]{ID, NAME}, null, null, null, null, NAME);
     }
 }

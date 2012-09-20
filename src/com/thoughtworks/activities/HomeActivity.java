@@ -22,7 +22,7 @@ public class HomeActivity extends MainActivity {
         viewAll = (Button) findViewById(R.id.view_all);
         viewAll.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(context, ListByCountryActivity.class);
+                Intent intent = new Intent(context, HomeGridActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
             }

@@ -48,4 +48,10 @@ public class DBHelper {
         return Office.getOffice(db.mDb, officeId);
     }
 
+    public Cursor getPlaceTypes(Context context) {
+        BaseDB db = new BaseDB();
+        db.open(context);
+        return PlaceType.getAll(db.mDb);
+    }
+
 }

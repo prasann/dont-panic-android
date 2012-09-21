@@ -6,16 +6,41 @@
     <com.thoughtworks.widget.ActionBar
             android:id="@+id/actionBar"
             android:layout_width="fill_parent"
+            android:padding="2dip"
             android:layout_height="45dip"
-            android:layout_weight="1"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"/>
-
-    <Button
-            android:id="@+id/view_all"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:text="@string/view_all"
-            android:layout_alignParentBottom="true"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="fill_parent"
+                  android:orientation="horizontal"
+                  android:layout_below="@id/actionBar"
+                  android:layout_marginLeft="25dip"
+                  android:id="@+id/city_layout"
+                  android:paddingBottom="2dip"
+                  android:layout_height="wrap_content">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Current City: "
+                  android:id="@+id/city_label"
+                  android:textSize="14dip"
+                />
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chennai"
+                android:textColor="#0000ff"
+                android:textSize="14dip"
+                />
+    </LinearLayout>
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/gridview"
+              android:layout_below="@id/city_layout"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:columnWidth="120dp"
+              android:numColumns="auto_fit"
+              android:verticalSpacing="10dp"
+              android:horizontalSpacing="20dp"
+              android:stretchMode="columnWidth"
+              android:gravity="center"
+            />
 </RelativeLayout>
-

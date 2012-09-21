@@ -65,7 +65,11 @@ public class City {
         }
     }
 
-    public static Cursor getAll(SQLiteDatabase mDb, int countryId) {
+    public static Cursor getAllBy(SQLiteDatabase mDb, int countryId) {
         return mDb.query(TABLE_NAME, new String[]{ID, NAME, CODE}, COUNTRY_ID + " = " + countryId, null, null, null, NAME);
+    }
+
+    public static Cursor getAll(SQLiteDatabase mDb) {
+        return mDb.query(TABLE_NAME, new String[]{ID, NAME, CODE}, null, null, null, null, NAME);
     }
 }

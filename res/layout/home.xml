@@ -26,7 +26,7 @@
                 />
         <Button android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chennai"
+                android:id="@+id/city_btn"
                 android:textColor="#0000ff"
                 android:textSize="14dip"
                 />

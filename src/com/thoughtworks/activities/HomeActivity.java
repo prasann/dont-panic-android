@@ -1,9 +1,11 @@
 package com.thoughtworks.activities;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 import com.thoughtworks.R;
@@ -21,11 +23,23 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         setActionBar();
+        cityButton();
         GridView gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(new ImageAdapter(this, getPlaceTypes()));
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Toast.makeText(HomeActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void cityButton() {
+        Button cityBtn = (Button) findViewById(R.id.city_btn);
+        cityBtn.setText(getCity());
+        cityBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), AllCitiesActivity.class);
+                startActivityForResult(intent, RESULT_FIRST_USER);
             }
         });
     }

@@ -12,7 +12,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ListByCountryActivity" android:label="Countries"/>
+        <activity android:name=".activities.AllCitiesActivity" android:label="Cities"/>
         <activity android:name=".activities.ListByCityActivity" android:label="Cities"/>
         <activity android:name=".activities.ListByOfficeActivity" android:label="Offices"/>
         <activity android:name=".activities.OfficeSummaryActivity" android:label="Offices"/>

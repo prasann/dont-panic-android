@@ -2,6 +2,7 @@ package com.thoughtworks.activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -10,6 +11,9 @@ import android.view.Window;
 import android.widget.Toast;
 import com.thoughtworks.R;
 import com.thoughtworks.widget.ActionBar;
+
+import static com.thoughtworks.utils.Constants.CITY_PREFS;
+import static com.thoughtworks.utils.Constants.PREFS_NAME;
 
 public class BaseActivity extends Activity {
     private ActionBar mActionBar;
@@ -21,14 +25,25 @@ public class BaseActivity extends Activity {
     }
 
     public void setActionBar() {
+        final Context context = this;
         mActionBar = (ActionBar) findViewById(R.id.actionBar);
         mActionBar.setTitle("Don't Panic");
         mActionBar.setHomeLogo(R.drawable.ic_launcher);
+        mActionBar.addActionButton(getCity(), new View.OnClickListener() {
+            public void onClick(View view) {
+                Toast.makeText(context, "Chennai", 4);
+            }
+        });
         mActionBar.addActionIcon(R.drawable.ic_menu_sync, new View.OnClickListener() {
             public void onClick(View view) {
                 syncData();
             }
         });
+    }
+
+    public String getCity() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        return settings.getString(CITY_PREFS, "SomeOffice");
     }
 
     private void syncData() {

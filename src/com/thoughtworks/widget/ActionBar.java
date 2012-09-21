@@ -89,6 +89,14 @@ public class ActionBar extends RelativeLayout {
         mActionIconContainer.addView(view, mActionIconContainer.getChildCount());
     }
 
+    public void addActionButton(String text, OnClickListener onClickListener) {
+        View view = mInflater.inflate(R.layout.actionbar_button, mActionIconContainer, false);
+        Button button = (Button) view.findViewById(R.id.actionbar_btn_item);
+        button.setText(text);
+        button.setOnClickListener(onClickListener);
+        mActionIconContainer.addView(view, mActionIconContainer.getChildCount());
+    }
+
     /**
      * Remove the action icon from the given index (0 based)
      *

@@ -23,7 +23,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return placeTypes.size() + 2;
+        return placeTypes.size() + 3;
     }
 
     public Object getItem(int position) {
@@ -44,9 +44,12 @@ public class ImageAdapter extends BaseAdapter {
                 case 1:
                     v = setImageText("Offices", R.drawable.office);
                     break;
+                case 2:
+                    v = setImageText("Admins", R.drawable.admins);
+                    break;
                 default:
-                    String name = placeTypes.get(position - 2).getName();
-                    v = setImageText(name, mContext.getResources().getIdentifier(name.toLowerCase(),"drawable","com.thoughtworks"));
+                    String name = placeTypes.get(position - 3).getName();
+                    v = setImageText(name, mContext.getResources().getIdentifier(name.toLowerCase(), "drawable", "com.thoughtworks"));
             }
         } else {
             v = convertView;

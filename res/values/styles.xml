@@ -1,5 +1,5 @@
 <resources>
-    <style name="MyTheme" parent="android:Theme.Light.NoTitleBar">
+    <style name="MyTheme" parent="android:Theme.Light">
         <item name="android:textViewStyle">@style/MyListTextAppearanceMedium</item>
     </style>
     <style name="MyListTextAppearanceMedium">

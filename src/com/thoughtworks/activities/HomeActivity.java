@@ -1,31 +1,43 @@
 package com.thoughtworks.activities;
 
-import android.content.Context;
-import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.Toast;
 import com.thoughtworks.R;
+import com.thoughtworks.adapters.ImageAdapter;
+import com.thoughtworks.database.DBHelper;
+import com.thoughtworks.models.PlaceType;
 
-public class HomeActivity extends MainActivity {
-    private Button viewAll;
+import java.util.ArrayList;
+import java.util.List;
+
+public class HomeActivity extends BaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        final Context context = this;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
-        viewAllButton(context);
-    }
-
-    private void viewAllButton(final Context context) {
-        viewAll = (Button) findViewById(R.id.view_all);
-        viewAll.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(context, HomeGridActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
+        setContentView(R.layout.main);
+        setActionBar();
+        GridView gridview = (GridView) findViewById(R.id.gridview);
+        gridview.setAdapter(new ImageAdapter(this, getPlaceTypes()));
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Toast.makeText(HomeActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private List<PlaceType> getPlaceTypes() {
+        DBHelper dbHelper = new DBHelper();
+        Cursor cursor = dbHelper.getPlaceTypes(this);
+        List<PlaceType> placeTypeList = new ArrayList<PlaceType>();
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            placeTypeList.add(new PlaceType(cursor));
+        }
+        cursor.close();
+        return placeTypeList;
     }
 }

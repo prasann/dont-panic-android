@@ -16,7 +16,7 @@
         <activity android:name=".activities.ListByCityActivity" android:label="Cities"/>
         <activity android:name=".activities.ListByOfficeActivity" android:label="Offices"/>
         <activity android:name=".activities.OfficeSummaryActivity" android:label="Offices"/>
-        <activity android:name=".activities.HomeGridActivity" android:label="Offices"/>
+        <activity android:name=".activities.HomeActivity" android:label="Offices"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

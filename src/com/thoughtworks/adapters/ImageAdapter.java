@@ -49,12 +49,20 @@ public class ImageAdapter extends BaseAdapter {
                     break;
                 default:
                     String name = placeTypes.get(position - 3).getName();
-                    v = setImageText(name, mContext.getResources().getIdentifier(name.toLowerCase(), "drawable", "com.thoughtworks"));
+                    v = setImageText(name, getResources(name));
             }
         } else {
             v = convertView;
         }
         return v;
+    }
+
+    private int getResources(String name) {
+        int resId = mContext.getResources().getIdentifier(name.toLowerCase(), "drawable", "com.thoughtworks");
+        if (resId == 0) {
+            resId = mContext.getResources().getIdentifier("building", "drawable", "com.thoughtworks");
+        }
+        return resId;
     }
 
     private View setImageText(String text, Integer imageResource) {

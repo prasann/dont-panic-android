@@ -118,14 +118,6 @@ public class Office {
     }
 
     public static Cursor getAll(SQLiteDatabase mDb, int cityId) {
-//        String query = "select offices._id,offices.name as " + OFFICE_NAME_ALIAS + ",companies.name as " + COMPANY_NAME_ALIAS +
-//                " from offices,companies where offices.company_id = companies._id and offices.city_id = ?";
-//        return mDb.rawQuery(query, new String[]{String.valueOf(cityId)});
         return mDb.query(TABLE_NAME, new String[]{ID, NAME, ADDRESS, LATITUDE, LONGITUDE, PHONE_NUMBERS, EMAIL}, CITY_ID + " = " + cityId, null, null, null, NAME);
     }
-
-    public static Cursor getOffice(SQLiteDatabase mDb, int officeId) {
-        return mDb.query(TABLE_NAME, new String[]{ID, NAME, ADDRESS, LATITUDE, LONGITUDE, PHONE_NUMBERS, EMAIL}, ID + " = " + officeId, null, null, null, NAME);
-    }
-
 }

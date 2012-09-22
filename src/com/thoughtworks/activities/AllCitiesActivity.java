@@ -35,8 +35,10 @@ public class AllCitiesActivity extends ListActivity {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor edit = settings.edit();
         edit.putString(Constants.CITY_PREFS, city.getName());
+        edit.putInt(Constants.CITY_ID_PREFS, city.getId());
         edit.commit();
         Intent intent = new Intent(v.getContext(), HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivityForResult(intent, RESULT_FIRST_USER);
         overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
     }

@@ -3,6 +3,7 @@ package com.thoughtworks.utils;
 public class Constants {
     public static final String PREFS_NAME = "MyPrefsFile";
     public static final String CITY_PREFS = "CityPrefs";
+    public static final String CITY_ID_PREFS = "CityIdPrefs";
 
     public static final String OBJ_MAP_COUNTRIES = "countries";
     public static final String OBJ_MAP_CITIES = "cities";

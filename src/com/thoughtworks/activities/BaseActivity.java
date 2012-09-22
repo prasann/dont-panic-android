@@ -29,11 +29,7 @@ public class BaseActivity extends Activity {
         mActionBar = (ActionBar) findViewById(R.id.actionBar);
         mActionBar.setTitle("Don't Panic");
         mActionBar.setHomeLogo(R.drawable.ic_launcher);
-        mActionBar.addActionButton(getCity(), new View.OnClickListener() {
-            public void onClick(View view) {
-                Toast.makeText(context, "Chennai", 4);
-            }
-        });
+        mActionBar.addActionButton(getCity(), null);
         mActionBar.addActionIcon(R.drawable.ic_menu_sync, new View.OnClickListener() {
             public void onClick(View view) {
                 syncData();

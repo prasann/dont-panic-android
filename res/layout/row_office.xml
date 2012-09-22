@@ -4,37 +4,30 @@
               android:layout_height="wrap_content"
               android:orientation="vertical"
               android:padding="6dip">
-    <LinearLayout
-            android:orientation="horizontal"
+    <TextView
+            android:id="@+id/row_office_name"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-        <TextView
-                android:id="@+id/row_office_id"
-                android:layout_width="fill_parent"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                />
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:padding="5sp"
-                    android:id="@+id/row_office_name"
-                    />
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:paddingLeft="5sp"
-                    android:id="@+id/row_company_name"
-                    />
+            android:textStyle="bold"
+            android:textSize="20dip"
+            android:layout_height="wrap_content"
+            />
+    <TextView
+            android:id="@+id/row_office_address"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
 
-        </LinearLayout>
-    </LinearLayout>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/row_office_phone"
+            />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/row_office_email"
+            />
+
 </LinearLayout>

@@ -28,7 +28,21 @@ public class HomeActivity extends BaseActivity {
         gridview.setAdapter(new ImageAdapter(this, getPlaceTypes()));
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Toast.makeText(HomeActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+                switch (position) {
+                    case 0:
+                        Toast.makeText(HomeActivity.this, "Favourites", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        Intent intent = new Intent(v.getContext(), OfficeSummaryActivity.class);
+                        startActivityForResult(intent, RESULT_FIRST_USER);
+                        break;
+                    case 2:
+                        Toast.makeText(HomeActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+
+                        break;
+                    default:
+                        Toast.makeText(HomeActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

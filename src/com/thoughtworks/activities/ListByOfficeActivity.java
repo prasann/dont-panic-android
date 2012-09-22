@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 import com.thoughtworks.R;
 import com.thoughtworks.adapters.OfficeListAdapter;
 import com.thoughtworks.database.DBHelper;
@@ -29,7 +28,6 @@ public class ListByOfficeActivity extends ListActivity {
         String cityId = (String) bundle.get(Constants.CITY_ID);
         String cityName = (String) bundle.get(Constants.CITY_NAME);
         setContentView(R.layout.office_listing);
-        setCountryName(cityName);
         listView(cityId);
     }
 
@@ -45,14 +43,9 @@ public class ListByOfficeActivity extends ListActivity {
         overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
     }
 
-    private void setCountryName(String cityName) {
-        TextView countryNameView = (TextView) findViewById(R.id.city_name);
-        countryNameView.setText(cityName);
-    }
-
     private void listView(String cityId) {
         List<OfficeInfo> cityList = getAllOffices(Integer.valueOf(cityId));
-        officeListAdapter = new OfficeListAdapter(this, R.layout.row_office, cityList);
+//        officeListAdapter = new OfficeListAdapter(this, R.layout.row_office, cityList);
         this.setListAdapter(officeListAdapter);
     }
 

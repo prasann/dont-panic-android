@@ -42,7 +42,7 @@ public class ImageAdapter extends BaseAdapter {
                     v = setImageText("Favourites", R.drawable.favourites);
                     break;
                 case 1:
-                    v = setImageText("Offices", R.drawable.office);
+                    v = setImageText("Offices", R.drawable.offices);
                     break;
                 case 2:
                     v = setImageText("Admins", R.drawable.admins);

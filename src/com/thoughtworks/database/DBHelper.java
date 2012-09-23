@@ -42,4 +42,10 @@ public class DBHelper {
         return PlaceType.getAll(db.mDb);
     }
 
+    public Cursor getAdministratorsBy(int cityId, Context context) {
+        BaseDB db = new BaseDB();
+        db.open(context);
+        return Administrator.getAll(db.mDb,cityId);
+    }
+
 }

@@ -17,9 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends BaseActivity {
+    private Intent intent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         setActionBar();
@@ -33,11 +35,12 @@ public class HomeActivity extends BaseActivity {
                         Toast.makeText(HomeActivity.this, "Favourites", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        Intent intent = new Intent(v.getContext(), OfficeSummaryActivity.class);
+                        intent = new Intent(v.getContext(), OfficeSummaryActivity.class);
                         startActivityForResult(intent, RESULT_FIRST_USER);
                         break;
                     case 2:
-                        Toast.makeText(HomeActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+                        intent = new Intent(v.getContext(), AdminSummaryActivity.class);
+                        startActivityForResult(intent, RESULT_FIRST_USER);
 
                         break;
                     default:

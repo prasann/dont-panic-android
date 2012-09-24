@@ -1,7 +1,6 @@
 package com.thoughtworks.tasks;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.util.Log;
 import com.thoughtworks.database.DBHelper;
 import com.thoughtworks.processors.JSONParser;
@@ -13,7 +12,7 @@ import java.util.Map;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
-public class DataSyncTask{
+public class DataSyncTask {
 
     private String TAG = "DataSyncTask";
     private String EMPTY_STRING = "";

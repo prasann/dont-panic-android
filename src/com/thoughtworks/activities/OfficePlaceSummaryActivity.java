@@ -19,7 +19,7 @@ import java.util.List;
 import static com.thoughtworks.utils.Constants.CITY_ID_PREFS;
 import static com.thoughtworks.utils.Constants.PREFS_NAME;
 
-public class OfficeSummaryActivity extends ListActivity {
+public class OfficePlaceSummaryActivity extends ListActivity {
     private OfficeListAdapter officeListAdapter;
     private PlaceListAdapter placeListAdapter;
 
@@ -29,25 +29,22 @@ public class OfficeSummaryActivity extends ListActivity {
         Bundle bundle = getIntent().getExtras();
         setContentView(R.layout.office_listing);
         if (bundle == null) {
-            TextView emptyText = (TextView) findViewById(R.id.empty_text);
-            emptyText.setText("No Offices in the list");
             officeView();
         } else {
-            TextView emptyText = (TextView) findViewById(R.id.empty_text);
-            emptyText.setText("No Places in the list");
             String placeType = (String) bundle.get(Constants.PLACE_TYPE);
             placeTypeView(placeType);
         }
     }
 
     private void placeTypeView(String placeType) {
+        setEmptyListText("No Places found.");
         List<Place> cityList = getPlaces(placeType);
         placeListAdapter = new PlaceListAdapter(this, R.layout.row_office, cityList);
         this.setListAdapter(placeListAdapter);
     }
 
     private List<Place> getPlaces(String placeType) {
-        int cityId = getCityPrefs();
+        int cityId = getCityPreference();
         Cursor cursor = new DBHelper().getPlace(this, cityId, placeType);
         List<Place> placeList = new ArrayList<Place>();
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
@@ -57,20 +54,26 @@ public class OfficeSummaryActivity extends ListActivity {
         return placeList;
     }
 
-    private int getCityPrefs() {
+    private int getCityPreference() {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         return settings.getInt(CITY_ID_PREFS, 1);
     }
 
     private void officeView() {
+        setEmptyListText("No Offices found.");
         List<Office> cityList = getOffices();
         officeListAdapter = new OfficeListAdapter(this, R.layout.row_office, cityList);
         this.setListAdapter(officeListAdapter);
     }
 
+    private void setEmptyListText(String text) {
+        TextView emptyText = (TextView) findViewById(R.id.empty_text);
+        emptyText.setText(text);
+    }
+
 
     private List<Office> getOffices() {
-        int cityId = getCityPrefs();
+        int cityId = getCityPreference();
         Cursor cursor = new DBHelper().getAllOffices(this, cityId);
         List<Office> officeList = new ArrayList<Office>();
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {

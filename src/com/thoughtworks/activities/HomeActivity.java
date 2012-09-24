@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.Toast;
 import com.thoughtworks.R;
 import com.thoughtworks.adapters.ImageAdapter;
 import com.thoughtworks.database.DBHelper;
@@ -33,20 +32,17 @@ public class HomeActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 switch (position) {
                     case 0:
-                        Toast.makeText(HomeActivity.this, "Favourites", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 1:
-                        intent = new Intent(v.getContext(), OfficeSummaryActivity.class);
+                        intent = new Intent(v.getContext(), OfficePlaceSummaryActivity.class);
                         startActivityForResult(intent, RESULT_FIRST_USER);
                         break;
-                    case 2:
+                    case 1:
                         intent = new Intent(v.getContext(), AdminSummaryActivity.class);
                         startActivityForResult(intent, RESULT_FIRST_USER);
                         break;
                     default:
-                        intent = new Intent(v.getContext(), OfficeSummaryActivity.class);
+                        intent = new Intent(v.getContext(), OfficePlaceSummaryActivity.class);
                         List<PlaceType> placeTypes = getPlaceTypes();
-                        PlaceType placeType = placeTypes.get(position - 3);
+                        PlaceType placeType = placeTypes.get(position - 2);
                         Bundle bundle = new Bundle();
                         bundle.putString(Constants.PLACE_TYPE, placeType.getName());
                         intent.putExtras(bundle);
@@ -61,7 +57,7 @@ public class HomeActivity extends BaseActivity {
         cityBtn.setText(getCity());
         cityBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), AllCitiesActivity.class);
+                Intent intent = new Intent(view.getContext(), ListCitiesActivity.class);
                 startActivityForResult(intent, RESULT_FIRST_USER);
             }
         });

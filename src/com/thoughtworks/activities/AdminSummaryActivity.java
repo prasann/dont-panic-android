@@ -24,24 +24,24 @@ public class AdminSummaryActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.office_listing);
         TextView emptyText = (TextView) findViewById(R.id.empty_text);
-        emptyText.setText("No Admins in the list");
+        emptyText.setText("No Administrators found.");
         listView();
     }
 
-    private int getCityPrefs() {
+    private int getCityPreference() {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         return settings.getInt(CITY_ID_PREFS, 1);
     }
 
     private void listView() {
-        List<Administrator> cityList = getOffices();
+        List<Administrator> cityList = getAdministrators();
         adminListAdapter = new AdminListAdapter(this, R.layout.row_admin, cityList);
         this.setListAdapter(adminListAdapter);
     }
 
 
-    private List<Administrator> getOffices() {
-        int cityId = getCityPrefs();
+    private List<Administrator> getAdministrators() {
+        int cityId = getCityPreference();
         Cursor cursor = new DBHelper().getAdministratorsBy(cityId, this);
         List<Administrator> adminList = new ArrayList<Administrator>();
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {

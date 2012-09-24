@@ -23,7 +23,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return placeTypes.size() + 3;
+        return placeTypes.size() + 2;
     }
 
     public Object getItem(int position) {
@@ -39,16 +39,13 @@ public class ImageAdapter extends BaseAdapter {
         if (convertView == null) {
             switch (position) {
                 case 0:
-                    v = setImageText("Favourites", R.drawable.favourites);
-                    break;
-                case 1:
                     v = setImageText("Offices", R.drawable.offices);
                     break;
-                case 2:
+                case 1:
                     v = setImageText("Admins", R.drawable.admins);
                     break;
                 default:
-                    String name = placeTypes.get(position - 3).getName();
+                    String name = placeTypes.get(position - 2).getName();
                     v = setImageText(name, getResources(name));
             }
         } else {

@@ -18,7 +18,7 @@ import java.util.List;
 
 import static com.thoughtworks.utils.Constants.PREFS_NAME;
 
-public class AllCitiesActivity extends ListActivity {
+public class ListCitiesActivity extends ListActivity {
     private CityListAdapter cityListAdapter;
 
     @Override

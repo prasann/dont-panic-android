@@ -12,8 +12,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.AllCitiesActivity" android:label="Cities"/>
-        <activity android:name=".activities.OfficeSummaryActivity" android:label="Offices"/>
+        <activity android:name=".activities.ListCitiesActivity" android:label="Cities"/>
+        <activity android:name=".activities.OfficePlaceSummaryActivity" android:label="Offices"/>
         <activity android:name=".activities.AdminSummaryActivity" android:label="Admins"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>

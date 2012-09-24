@@ -10,7 +10,8 @@ import java.util.Map;
 
 public class SyncActivity {
 
-    ProgressDialog progressBar;
+    private static final String WEB_URL = "http://dont-panic.herokuapp.com/data.json";
+    private ProgressDialog progressBar;
     private Handler progressBarHandler = new Handler();
     private Context context;
 
@@ -26,7 +27,11 @@ public class SyncActivity {
         progressBar.setMax(100);
         progressBar.setTitle("Sync data...");
         progressBar.show();
-        new Thread(new Runnable() {
+        fetchDataThread().start();
+    }
+
+    private Thread fetchDataThread() {
+        return new Thread(new Runnable() {
             public void run() {
                 DataSyncTask dataSyncTask = new DataSyncTask(context);
                 String json = downloadData(dataSyncTask);
@@ -35,11 +40,11 @@ public class SyncActivity {
                 Map<String, Object> stringObjectMap = parseData(dataSyncTask, json);
                 if (stringObjectMap == null) return;
                 progressAndMessage(66, "Saving information...");
-                if (saveData(dataSyncTask, stringObjectMap)) return;
+                if (!saveData(dataSyncTask, stringObjectMap)) return;
                 progressBar.setProgress(100);
                 progressBar.dismiss();
             }
-        }).start();
+        });
     }
 
     private void progressAndMessage(final int progress, final String message) {
@@ -52,9 +57,9 @@ public class SyncActivity {
     }
 
     private String downloadData(DataSyncTask dataSyncTask) {
-        String json = dataSyncTask.downloadData("http://dont-panic.herokuapp.com/data.json");
+        String json = dataSyncTask.downloadData(WEB_URL);
         if (json.equals("")) {
-            error();
+            error("Some issue in downloading data. Please try after sometime.");
             return null;
         }
         return json;
@@ -63,7 +68,7 @@ public class SyncActivity {
     private Map<String, Object> parseData(DataSyncTask dataSyncTask, String json) {
         Map<String, Object> stringObjectMap = dataSyncTask.parseJSON(json);
         if (stringObjectMap == null) {
-            error();
+            error("Parsing the data failed.");
             return null;
         }
         return stringObjectMap;
@@ -72,15 +77,15 @@ public class SyncActivity {
     private boolean saveData(DataSyncTask dataSyncTask, Map<String, Object> stringObjectMap) {
         int status = dataSyncTask.saveData(stringObjectMap);
         if (status == 0) {
-            error();
-            return true;
+            error("Saving the fetched data failed.");
+            return false;
         }
-        return false;
+        return true;
     }
 
-    public void error() {
+    public void error(String text) {
         progressBar.dismiss();
-        Toast toast = Toast.makeText(context, "You need data connection to Sync content", 15);
+        Toast toast = Toast.makeText(context, text, 15);
         toast.show();
     }
 

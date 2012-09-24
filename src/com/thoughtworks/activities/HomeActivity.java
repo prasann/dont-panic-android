@@ -21,8 +21,20 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+        if (hasData()) {
+            renderHomePage();
+        } else {
+            renderNoDataPage();
+        }
+    }
+
+    private void renderNoDataPage() {
+        setContentView(R.layout.nodata);
+        setActionBar();
+    }
+
+    private void renderHomePage() {
         setContentView(R.layout.home);
         setActionBar();
         cityButton();
@@ -50,6 +62,11 @@ public class HomeActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    private boolean hasData() {
+        Cursor allCities = new DBHelper().getAllCities(this);
+        return (allCities != null && allCities.getCount() > 0);
     }
 
     private void cityButton() {

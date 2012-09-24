@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -11,6 +12,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 import com.thoughtworks.R;
+import com.thoughtworks.database.DBHelper;
+import com.thoughtworks.models.City;
+import com.thoughtworks.utils.Constants;
 import com.thoughtworks.widget.ActionBar;
 
 import static com.thoughtworks.utils.Constants.CITY_PREFS;
@@ -37,8 +41,37 @@ public class BaseActivity extends Activity {
     }
 
     public String getCity() {
+        String city = retrieveFromSharedPreference();
+        if (city.equals("")) {
+            updateSharedPreference(getCityFromDB());
+        }
+        return retrieveFromSharedPreference();
+    }
+
+    private void updateSharedPreference(City city) {
+        if (city == null)
+            return;
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor edit = settings.edit();
+        edit.putString(Constants.CITY_PREFS, city.getName());
+        edit.putInt(Constants.CITY_ID_PREFS, city.getId());
+        edit.commit();
+    }
+
+    private String retrieveFromSharedPreference() {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         return settings.getString(CITY_PREFS, "");
+    }
+
+    private City getCityFromDB() {
+        Cursor cursor = new DBHelper().getACity(this);
+        if (cursor == null || cursor.getCount() == 0) {
+            return null;
+        }
+        cursor.moveToFirst();
+        City city = new City(cursor);
+        cursor.close();
+        return city;
     }
 
     private void syncData() {

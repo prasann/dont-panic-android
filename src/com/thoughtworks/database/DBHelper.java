@@ -24,6 +24,12 @@ public class DBHelper {
         db.close();
     }
 
+    public Cursor getACity(Context context) {
+        BaseDB db = new BaseDB();
+        db.open(context);
+        return City.getACity(db.mDb);
+    }
+
     public Cursor getAllCities(Context context) {
         BaseDB db = new BaseDB();
         db.open(context);

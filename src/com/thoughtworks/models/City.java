@@ -68,4 +68,8 @@ public class City {
     public static Cursor getAll(SQLiteDatabase mDb) {
         return mDb.query(TABLE_NAME, new String[]{ID, NAME, CODE}, null, null, null, null, NAME);
     }
+
+    public static Cursor getACity(SQLiteDatabase mDb) {
+        return mDb.query(TABLE_NAME, new String[]{ID, NAME, CODE}, null, null, null, null, NAME, "1");
+    }
 }

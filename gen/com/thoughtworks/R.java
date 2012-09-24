@@ -15,10 +15,13 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int actionbar_separator=0x7f050003;
-        public static final int actionbar_title=0x7f050004;
+        public static final int actionbar_separator=0x7f050006;
+        public static final int actionbar_title=0x7f050007;
         public static final int black=0x7f050001;
+        public static final int blue_1=0x7f050004;
+        public static final int blue_2=0x7f050005;
         public static final int dark_green=0x7f050002;
+        public static final int grey=0x7f050003;
         public static final int white=0x7f050000;
     }
     public static final class dimen {
@@ -30,17 +33,18 @@ public final class R {
         public static final int actionbar_btn_normal=0x7f020001;
         public static final int actionbar_btn_pressed=0x7f020002;
         public static final int admins=0x7f020003;
-        public static final int building=0x7f020004;
-        public static final int buttons=0x7f020005;
-        public static final int favourites=0x7f020006;
-        public static final int gyms=0x7f020007;
-        public static final int home=0x7f020008;
-        public static final int ic_launcher=0x7f020009;
-        public static final int ic_menu_sync=0x7f02000a;
-        public static final int malls=0x7f02000b;
-        public static final int offices=0x7f02000c;
-        public static final int pubs=0x7f02000d;
-        public static final int restaurants=0x7f02000e;
+        public static final int blue_button=0x7f020004;
+        public static final int building=0x7f020005;
+        public static final int buttons=0x7f020006;
+        public static final int favourites=0x7f020007;
+        public static final int gyms=0x7f020008;
+        public static final int home=0x7f020009;
+        public static final int ic_launcher=0x7f02000a;
+        public static final int ic_menu_sync=0x7f02000b;
+        public static final int malls=0x7f02000c;
+        public static final int offices=0x7f02000d;
+        public static final int pubs=0x7f02000e;
+        public static final int restaurants=0x7f02000f;
     }
     public static final class id {
         public static final int actionBar=0x7f0a0007;
@@ -86,12 +90,13 @@ public final class R {
         public static final int custom_title=0x7f030005;
         public static final int grid_item=0x7f030006;
         public static final int home=0x7f030007;
-        public static final int office_listing=0x7f030008;
-        public static final int office_summary=0x7f030009;
-        public static final int row_admin=0x7f03000a;
-        public static final int row_city=0x7f03000b;
-        public static final int row_office=0x7f03000c;
-        public static final int splash=0x7f03000d;
+        public static final int nodata=0x7f030008;
+        public static final int office_listing=0x7f030009;
+        public static final int office_summary=0x7f03000a;
+        public static final int row_admin=0x7f03000b;
+        public static final int row_city=0x7f03000c;
+        public static final int row_office=0x7f03000d;
+        public static final int splash=0x7f03000e;
     }
     public static final class menu {
         public static final int sync_menu=0x7f090000;
@@ -103,6 +108,7 @@ public final class R {
         public static final int view_all=0x7f070001;
     }
     public static final class style {
+        public static final int ButtonText=0x7f080002;
         public static final int MyListTextAppearanceMedium=0x7f080001;
         public static final int MyTheme=0x7f080000;
     }

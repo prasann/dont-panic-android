@@ -14,11 +14,12 @@
                   android:layout_width="fill_parent"
                   android:orientation="horizontal"
                   android:layout_below="@id/actionBar"
-                  android:layout_marginLeft="25dip"
+                  android:gravity="center"
                   android:id="@+id/city_layout"
                   android:paddingBottom="2dip"
                   android:layout_height="wrap_content">
         <TextView android:layout_width="wrap_content"
+                  android:gravity="center"
                   android:layout_height="wrap_content"
                   android:text="Current City: "
                   android:id="@+id/city_label"
@@ -26,9 +27,10 @@
                 />
         <Button android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/city_label"
                 android:id="@+id/city_btn"
-                android:textColor="#0000ff"
-                android:textSize="14dip"
+                android:background="@drawable/blue_button"
+                style="@style/ButtonText"
                 />
     </LinearLayout>
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"

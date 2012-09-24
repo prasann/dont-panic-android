@@ -12,6 +12,7 @@ import com.thoughtworks.R;
 import com.thoughtworks.adapters.ImageAdapter;
 import com.thoughtworks.database.DBHelper;
 import com.thoughtworks.models.PlaceType;
+import com.thoughtworks.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,10 +42,15 @@ public class HomeActivity extends BaseActivity {
                     case 2:
                         intent = new Intent(v.getContext(), AdminSummaryActivity.class);
                         startActivityForResult(intent, RESULT_FIRST_USER);
-
                         break;
                     default:
-                        Toast.makeText(HomeActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+                        intent = new Intent(v.getContext(), OfficeSummaryActivity.class);
+                        List<PlaceType> placeTypes = getPlaceTypes();
+                        PlaceType placeType = placeTypes.get(position - 3);
+                        Bundle bundle = new Bundle();
+                        bundle.putString(Constants.PLACE_TYPE, placeType.getName());
+                        intent.putExtras(bundle);
+                        startActivityForResult(intent, RESULT_FIRST_USER);
                 }
             }
         });

@@ -1,14 +1,22 @@
 package com.thoughtworks.models;
 
+import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.util.List;
 
 public class Place {
 
     private static final String TABLE_NAME = "places";
+    public static final String ID = "_id";
+    public static final String NAME = "name";
+    public static final String ADDRESS = "address";
+    public static final String LATITUDE = "latitude";
+    public static final String LONGITUDE = "longitude";
+    public static final String PHONE_NUMBERS = "phone_numbers";
+    public static final String EMAIL = "email";
+    public static final String CITY_ID = "city_id";
 
     private int id;
     private String name;
@@ -33,6 +41,16 @@ public class Place {
         this.placeTypeId = placeTypeId;
         this.cityId = cityId;
         this.description = description;
+    }
+
+    public Place(Cursor cursor) {
+        this.id = cursor.getInt(cursor.getColumnIndex(ID));
+        this.name = cursor.getString(cursor.getColumnIndex(NAME));
+        this.address = cursor.getString(cursor.getColumnIndex(ADDRESS));
+        this.latitude = cursor.getDouble(cursor.getColumnIndex(LATITUDE));
+        this.longitude = cursor.getDouble(cursor.getColumnIndex(LONGITUDE));
+        this.phoneNumber = cursor.getString(cursor.getColumnIndex(PHONE_NUMBERS));
+        this.email = cursor.getString(cursor.getColumnIndex(EMAIL));
     }
 
     public int getId() {
@@ -78,14 +96,14 @@ public class Place {
     public static void reCreate(SQLiteDatabase db, List<Place> places) {
         db.delete(TABLE_NAME, null, null);
         DatabaseUtils.InsertHelper insertHelper = new DatabaseUtils.InsertHelper(db, TABLE_NAME);
-        int id_index = insertHelper.getColumnIndex("_id");
-        int name_index = insertHelper.getColumnIndex("name");
-        int address_index = insertHelper.getColumnIndex("address");
-        int lat_index = insertHelper.getColumnIndex("latitude");
-        int long_index = insertHelper.getColumnIndex("longitude");
-        int phone_num_index = insertHelper.getColumnIndex("phone_numbers");
-        int email_index = insertHelper.getColumnIndex("email");
-        int cit_id_index = insertHelper.getColumnIndex("city_id");
+        int id_index = insertHelper.getColumnIndex(ID);
+        int name_index = insertHelper.getColumnIndex(NAME);
+        int address_index = insertHelper.getColumnIndex(ADDRESS);
+        int lat_index = insertHelper.getColumnIndex(LATITUDE);
+        int long_index = insertHelper.getColumnIndex(LONGITUDE);
+        int phone_num_index = insertHelper.getColumnIndex(PHONE_NUMBERS);
+        int email_index = insertHelper.getColumnIndex(EMAIL);
+        int cit_id_index = insertHelper.getColumnIndex(CITY_ID);
         int desc_index = insertHelper.getColumnIndex("description");
         int place_type_index = insertHelper.getColumnIndex("place_type_id");
         for (Place office : places) {
@@ -102,6 +120,12 @@ public class Place {
             insertHelper.bind(place_type_index, office.getPlaceTypeId());
             insertHelper.execute();
         }
+    }
+
+    public static Cursor getPlace(SQLiteDatabase mDb, int cityId, String placeType) {
+        String query = "select places.* from places,place_types where places.city_id = ? " +
+                "and places.place_type_id = place_types._id and place_types.name = ?";
+        return mDb.rawQuery(query, new String[]{String.valueOf(cityId), placeType});
     }
 
 }

@@ -13,6 +13,7 @@ public class Constants {
     public static final String OBJ_MAP_PLACES = "places";
     public static final String OBJ_MAP_PLACE_TYPES = "place_types";
 
+    public static final String PLACE_TYPE = "place_type";
     public static final String COUNTRY_ID = "country_id";
     public static final String COUNTRY_NAME = "country_name";
     public static final String CITY_ID = "city_id";

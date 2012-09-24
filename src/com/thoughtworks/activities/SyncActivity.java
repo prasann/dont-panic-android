@@ -8,7 +8,7 @@ import com.thoughtworks.tasks.DataSyncTask;
 
 import java.util.Map;
 
-public class SyncActivity {
+public class SyncActivity{
 
     private static final String WEB_URL = "http://dont-panic.herokuapp.com/data.json";
     private ProgressDialog progressBar;

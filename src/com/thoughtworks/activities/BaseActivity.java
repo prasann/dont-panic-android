@@ -2,6 +2,7 @@ package com.thoughtworks.activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -43,6 +44,9 @@ public class BaseActivity extends Activity {
     private void syncData() {
         if (isNetworkAvailable()) {
             new SyncActivity(BaseActivity.this).sync();
+            Intent intent = new Intent(this, SplashScreenActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivityForResult(intent, RESULT_FIRST_USER);
         } else {
             Toast toast = Toast.makeText(BaseActivity.this, "You need data connection to Sync content", 15);
             toast.show();

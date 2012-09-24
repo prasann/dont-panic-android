@@ -1,6 +1,5 @@
 package com.thoughtworks.widget;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -10,25 +9,10 @@ import com.thoughtworks.R;
 
 public class ActionBar extends RelativeLayout {
 
-    /**
-     * Reusable {@link LayoutInflater}
-     */
     private LayoutInflater mInflater;
-    /**
-     * Holds the home-icon logo
-     */
     private ImageView mLogoView;
-    /**
-     * Displays the {@link Activity} text
-     */
     private TextView mTitleView;
-    /**
-     * Represents the progress bar (i.e. busy-icon)
-     */
     private ProgressBar mProgress;
-    /**
-     * Contains the ActionIcons.
-     */
     private LinearLayout mActionIconContainer;
 
     public ActionBar(Context context, AttributeSet attrs) {
@@ -65,22 +49,7 @@ public class ActionBar extends RelativeLayout {
         mTitleView.setText(resid);
     }
 
-    public void showProgressBar() {
-        setProgressBarVisibility(View.VISIBLE);
-    }
-
-    public void hideProgressBar() {
-        setProgressBarVisibility(View.GONE);
-    }
-
-    /**
-     * Adds ActionIcons to the ActionBar (adds to the left-end)
-     *
-     * @param iconResourceId
-     * @param onClickListener to handle click actions on the ActionIcon.
-     */
     public void addActionIcon(int iconResourceId, OnClickListener onClickListener) {
-        // Inflate
         View view = mInflater.inflate(R.layout.actionbar_icon, mActionIconContainer, false);
         ImageButton imgButton = (ImageButton) view.findViewById(R.id.actionbar_item);
         imgButton.setImageResource(iconResourceId);
@@ -97,12 +66,6 @@ public class ActionBar extends RelativeLayout {
         mActionIconContainer.addView(view, mActionIconContainer.getChildCount());
     }
 
-    /**
-     * Remove the action icon from the given index (0 based)
-     *
-     * @param index
-     * @return <code>true</code> if the item was removed
-     */
     public boolean removeActionIconAt(int index) {
         int count = mActionIconContainer.getChildCount();
         if (count > 0 && index >= 0 && index < count) {

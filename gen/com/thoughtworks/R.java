@@ -15,9 +15,10 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int actionbar_separator=0x7f050002;
-        public static final int actionbar_title=0x7f050003;
+        public static final int actionbar_separator=0x7f050003;
+        public static final int actionbar_title=0x7f050004;
         public static final int black=0x7f050001;
+        public static final int dark_green=0x7f050002;
         public static final int white=0x7f050000;
     }
     public static final class dimen {
@@ -72,7 +73,8 @@ public final class R {
         public static final int sum_off_longitude=0x7f0a0012;
         public static final int sum_off_name=0x7f0a0010;
         public static final int sum_off_phone=0x7f0a0014;
-        public static final int sync_menu=0x7f0a001f;
+        public static final int sync_menu=0x7f0a0020;
+        public static final int thought_label=0x7f0a001f;
         public static final int widget44=0x7f0a0008;
     }
     public static final class layout {
@@ -89,6 +91,7 @@ public final class R {
         public static final int row_admin=0x7f03000a;
         public static final int row_city=0x7f03000b;
         public static final int row_office=0x7f03000c;
+        public static final int splash=0x7f03000d;
     }
     public static final class menu {
         public static final int sync_menu=0x7f090000;

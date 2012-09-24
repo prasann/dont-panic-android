@@ -1,6 +1,7 @@
 <resources>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="dark_green">#ff164209</color>
     <color name="actionbar_separator">#ffffff</color>
     <color name="actionbar_title">#000000</color>
 </resources>

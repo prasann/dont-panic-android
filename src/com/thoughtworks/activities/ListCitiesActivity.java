@@ -1,6 +1,5 @@
 package com.thoughtworks.activities;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -18,13 +17,14 @@ import java.util.List;
 
 import static com.thoughtworks.utils.Constants.PREFS_NAME;
 
-public class ListCitiesActivity extends ListActivity {
+public class ListCitiesActivity extends BaseListActivity {
     private CityListAdapter cityListAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.country_listing);
+        setActionBar("Choose a City");
         listView();
     }
 

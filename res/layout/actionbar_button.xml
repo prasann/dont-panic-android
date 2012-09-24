@@ -2,8 +2,9 @@
 <Button xmlns:android="http://schemas.android.com/apk/res/android"
              android:id="@+id/actionbar_btn_item"
              android:layout_width="wrap_content"
-             android:layout_height="44dip"
-             android:textSize="8dip"
-             android:background="@drawable/actionbar_btn"
+             android:layout_height="50dip"
+             android:textSize="12dip"
+             style="@style/ButtonText"
+             android:background="@drawable/blue_button"
              android:layout_marginLeft="1dip" android:layout_centerVertical="true"
              android:singleLine="true" android:visibility="visible"/>

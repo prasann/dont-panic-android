@@ -43,8 +43,9 @@ public final class R {
         public static final int ic_menu_sync=0x7f02000b;
         public static final int malls=0x7f02000c;
         public static final int offices=0x7f02000d;
-        public static final int pubs=0x7f02000e;
-        public static final int restaurants=0x7f02000f;
+        public static final int panic=0x7f02000e;
+        public static final int pubs=0x7f02000f;
+        public static final int restaurants=0x7f020010;
     }
     public static final class id {
         public static final int actionBar=0x7f0a0007;

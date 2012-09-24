@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.widget.TextView;
 import com.thoughtworks.R;
 import com.thoughtworks.adapters.OfficeListAdapter;
 import com.thoughtworks.adapters.PlaceListAdapter;
@@ -28,8 +29,12 @@ public class OfficeSummaryActivity extends ListActivity {
         Bundle bundle = getIntent().getExtras();
         setContentView(R.layout.office_listing);
         if (bundle == null) {
+            TextView emptyText = (TextView) findViewById(R.id.empty_text);
+            emptyText.setText("No Offices in the list");
             officeView();
         } else {
+            TextView emptyText = (TextView) findViewById(R.id.empty_text);
+            emptyText.setText("No Places in the list");
             String placeType = (String) bundle.get(Constants.PLACE_TYPE);
             placeTypeView(placeType);
         }

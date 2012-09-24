@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.widget.TextView;
 import com.thoughtworks.R;
 import com.thoughtworks.adapters.AdminListAdapter;
 import com.thoughtworks.database.DBHelper;
@@ -22,6 +23,8 @@ public class AdminSummaryActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.office_listing);
+        TextView emptyText = (TextView) findViewById(R.id.empty_text);
+        emptyText.setText("No Admins in the list");
         listView();
     }
 

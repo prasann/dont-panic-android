@@ -42,6 +42,7 @@ public class OfficeListAdapter extends ArrayAdapter<Office> {
             setFields(String.valueOf(office.getAddress()), address_view);
             setFields(String.valueOf(office.getPhoneNumber()), phone_view);
             setFields(String.valueOf(office.getEmail()), email_view);
+
         }
         return view;
     }

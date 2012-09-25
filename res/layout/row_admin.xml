@@ -8,7 +8,7 @@
             android:id="@+id/row_admin_name"
             android:layout_width="wrap_content"
             android:textStyle="bold"
-            android:textSize="18dip"
+            android:textSize="20dip"
             android:padding="4dip"
             android:layout_height="wrap_content"
             />
@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/row_admin_number"
-                android:textSize="14dip"
+                android:textSize="18dip"
                 android:autoLink="all"
                 />
     </LinearLayout>
@@ -45,7 +45,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/row_admin_email"
-                android:textSize="14dip"
+                android:textSize="18dip"
+                android:paddingBottom="5dip"
                 android:autoLink="all"
                 />
     </LinearLayout>

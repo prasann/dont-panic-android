@@ -3,6 +3,8 @@ package com.thoughtworks.activities;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import com.thoughtworks.R;
 import com.thoughtworks.adapters.OfficeListAdapter;
@@ -35,11 +37,16 @@ public class OfficePlaceSummaryActivity extends BaseListActivity {
         }
     }
 
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+    }
+
     private void placeTypeView(String placeType) {
         setActionBar(placeType + " Information");
         setEmptyListText("No " + placeType + " found.");
         List<Place> cityList = getPlaces(placeType);
-        placeListAdapter = new PlaceListAdapter(this, R.layout.row_office, cityList);
+        placeListAdapter = new PlaceListAdapter(this, R.layout.row_officeplace, cityList);
         this.setListAdapter(placeListAdapter);
     }
 
@@ -65,7 +72,7 @@ public class OfficePlaceSummaryActivity extends BaseListActivity {
         setActionBar("Office Information");
         setEmptyListText("No Offices found.");
         List<Office> cityList = getOffices();
-        officeListAdapter = new OfficeListAdapter(this, R.layout.row_office, cityList);
+        officeListAdapter = new OfficeListAdapter(this, R.layout.row_officeplace, cityList);
         this.setListAdapter(officeListAdapter);
     }
 

@@ -1,6 +1,5 @@
 package com.thoughtworks.activities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -14,7 +13,7 @@ import com.thoughtworks.R;
 import com.thoughtworks.tasks.DataSyncTask;
 import com.thoughtworks.utils.Constants;
 
-public class SplashScreenActivity extends Activity {
+public class SplashScreenActivity extends BaseActivity {
 
     private static final String WEB_URL = "http://dont-panic.herokuapp.com/data.json";
 
@@ -23,10 +22,11 @@ public class SplashScreenActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.splash);
-        if (isNetworkAvailable()) {
+        boolean dataPresent = haveData();
+        if (isNetworkAvailable() && !dataPresent) {
             dataSyncThread().start();
         } else {
-            startHomeActivity(true);
+            startHomeActivity(!dataPresent);
         }
     }
 

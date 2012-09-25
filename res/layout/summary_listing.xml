@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:weightSum="10"
               android:orientation="vertical">
     <com.thoughtworks.widget.ActionBar
             android:id="@+id/actionBar"
@@ -12,11 +11,12 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"/>
     <ListView
+            android:layout_below="@id/actionBar"
             android:id="@+id/android:list"
             android:layout_marginTop="20dip"
-            android:layout_width="match_parent"
-            android:layout_weight="50"
-            android:layout_height="0dip">
+            android:layout_marginBottom="20dip"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
     </ListView>
     <LinearLayout android:id="@android:id/empty"
                   android:layout_width="fill_parent" android:layout_height="fill_parent"

@@ -24,7 +24,7 @@ public class HomeActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dataSyncCheck();
-        if (hasData()) {
+        if (haveData()) {
             renderHomePage();
         } else {
             renderNoDataPage();
@@ -64,16 +64,6 @@ public class HomeActivity extends BaseActivity {
                 }
             }
         });
-    }
-
-    private boolean hasData() {
-        boolean status = false;
-        DBHelper dbHelper = new DBHelper();
-        Cursor allCities = dbHelper.getAllCities(this);
-        status = allCities.getCount() > 0;
-        allCities.close();
-        dbHelper.close();
-        return status;
     }
 
     private void cityButton() {

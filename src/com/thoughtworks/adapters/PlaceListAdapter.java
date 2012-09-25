@@ -32,16 +32,22 @@ public class PlaceListAdapter extends ArrayAdapter<Place> {
             LayoutInflater vi = (LayoutInflater) myContext.getSystemService(LAYOUT_INFLATER_SERVICE);
             view = vi.inflate(layoutView, null);
         }
-        Place office = items.get(position);
-        if (office != null) {
+        Place place = items.get(position);
+        if (place != null) {
             TextView name_view = (TextView) view.findViewById(R.id.row_office_name);
             TextView address_view = (TextView) view.findViewById(R.id.row_office_address);
             TextView phone_view = (TextView) view.findViewById(R.id.row_office_phone);
             TextView email_view = (TextView) view.findViewById(R.id.row_office_email);
-            setFields(String.valueOf(office.getName()), name_view);
-            setFields(String.valueOf(office.getAddress()), address_view);
-            setFields(String.valueOf(office.getPhoneNumber()), phone_view);
-            setFields(String.valueOf(office.getEmail()), email_view);
+            setFields(String.valueOf(place.getName()), name_view);
+            setFields(String.valueOf(place.getAddress()), address_view);
+            setFields(String.valueOf(place.getPhoneNumber()), phone_view);
+            setFields(String.valueOf(place.getEmail()), email_view);
+            if (place.getEmail() == null || place.getEmail().equals("")) {
+                view.findViewById(R.id.off_mail_layout).setVisibility(View.GONE);
+            }
+            if (place.getPhoneNumber() == null || place.getPhoneNumber().equals("")) {
+                view.findViewById(R.id.off_phone_layout).setVisibility(View.GONE);
+            }
         }
         return view;
     }

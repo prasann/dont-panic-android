@@ -44,6 +44,17 @@ public class BaseActivity extends Activity {
         return retrieveFromSharedPreference();
     }
 
+    public boolean haveData() {
+        boolean status;
+        DBHelper dbHelper = new DBHelper();
+        Cursor allCities = dbHelper.getAllCities(this);
+        status = allCities.getCount() > 0;
+        allCities.close();
+        dbHelper.close();
+        return status;
+    }
+
+
     private void updateSharedPreference(City city) {
         if (city == null)
             return;
@@ -77,5 +88,4 @@ public class BaseActivity extends Activity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivityForResult(intent, RESULT_FIRST_USER);
     }
-
 }

@@ -8,7 +8,7 @@
             android:id="@+id/row_office_name"
             android:layout_width="fill_parent"
             android:textStyle="bold"
-            android:textSize="16dip"
+            android:textSize="18dip"
             android:paddingBottom="4dip"
             android:layout_height="wrap_content"
             />
@@ -18,13 +18,14 @@
             android:layout_weight="1"
             android:paddingBottom="4dip"
             android:lineSpacingMultiplier="1.2"
-            android:textSize="14dip"
+            android:textSize="16dip"
             android:layout_height="wrap_content"
             />
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:padding="2dip"
+                  android:id="@+id/off_phone_layout"
                   android:orientation="horizontal">
         <ImageView android:id="@+id/off_phone_icon"
                    android:layout_alignParentLeft="true" android:layout_width="wrap_content"
@@ -35,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/row_office_phone"
-                android:textSize="14dip"
+                android:textSize="16dip"
                 android:autoLink="all"
                 />
     </LinearLayout>
@@ -43,6 +44,7 @@
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:padding="2dip"
+                  android:id="@+id/off_mail_layout"
                   android:orientation="horizontal">
         <ImageView android:id="@+id/off_mail_icon"
                    android:layout_alignParentLeft="true" android:layout_width="wrap_content"
@@ -53,7 +55,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/row_office_email"
-                android:textSize="14dip"
+                android:textSize="16dip"
                 android:autoLink="all"
                 />
     </LinearLayout>

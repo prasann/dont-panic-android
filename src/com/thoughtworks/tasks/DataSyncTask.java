@@ -1,6 +1,7 @@
 package com.thoughtworks.tasks;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 import com.thoughtworks.database.DBHelper;
 import com.thoughtworks.processors.JSONParser;
@@ -12,11 +13,27 @@ import java.util.Map;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
-public class DataSyncTask {
+public class DataSyncTask extends AsyncTask<String, String, String> {
 
     private String TAG = "DataSyncTask";
     private String EMPTY_STRING = "";
     private Context context;
+
+    @Override
+    protected String doInBackground(String... uri) {
+        int status;
+        synchronized (this) {
+            Log.v(TAG, "Starting task");
+            String json = downloadData(uri[0]);
+            Log.v(TAG, "JSOn Done");
+            Map<String, Object> objectMap = parseJSON(json);
+            Log.v(TAG, "Map Done");
+            status = saveData(objectMap);
+            Log.v(TAG, "Save Done");
+            this.notify();
+        }
+        return String.valueOf(status);
+    }
 
     public DataSyncTask(Context context) {
         this.context = context;
@@ -88,5 +105,6 @@ public class DataSyncTask {
         }
         return content.toString();
     }
+
 
 }

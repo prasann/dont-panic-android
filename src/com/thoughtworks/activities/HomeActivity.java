@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.Toast;
 import com.thoughtworks.R;
 import com.thoughtworks.adapters.ImageAdapter;
 import com.thoughtworks.database.DBHelper;
@@ -22,6 +23,7 @@ public class HomeActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dataSyncCheck();
         if (hasData()) {
             renderHomePage();
         } else {
@@ -89,5 +91,16 @@ public class HomeActivity extends BaseActivity {
         }
         cursor.close();
         return placeTypeList;
+    }
+
+    private void dataSyncCheck() {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String dataSyncFailed = (String) extras.get(Constants.FAILED);
+            if (dataSyncFailed != null && dataSyncFailed.equals(Constants.FAILED)) {
+                Toast toast = Toast.makeText(this, "You need data connection to Sync content", 15);
+                toast.show();
+            }
+        }
     }
 }

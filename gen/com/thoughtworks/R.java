@@ -60,25 +60,26 @@ public final class R {
         public static final int city_btn=0x7f0a000c;
         public static final int city_label=0x7f0a000b;
         public static final int city_layout=0x7f0a000a;
-        public static final int empty_text=0x7f0a001c;
+        public static final int empty_text=0x7f0a001d;
         public static final int gridview=0x7f0a000d;
         public static final int icon_image=0x7f0a0008;
         public static final int icon_text=0x7f0a0009;
         public static final int off_mail_icon=0x7f0a0011;
-        public static final int off_mail_layout=0x7f0a0019;
+        public static final int off_mail_layout=0x7f0a001a;
         public static final int off_phone_icon=0x7f0a000f;
-        public static final int off_phone_layout=0x7f0a0017;
+        public static final int off_phone_layout=0x7f0a0018;
         public static final int row_admin_email=0x7f0a0012;
         public static final int row_admin_name=0x7f0a000e;
         public static final int row_admin_number=0x7f0a0010;
         public static final int row_city_id=0x7f0a0013;
         public static final int row_city_name=0x7f0a0014;
-        public static final int row_office_address=0x7f0a0016;
-        public static final int row_office_email=0x7f0a001a;
+        public static final int row_office_address=0x7f0a0017;
+        public static final int row_office_email=0x7f0a001b;
+        public static final int row_office_map=0x7f0a0016;
         public static final int row_office_name=0x7f0a0015;
-        public static final int row_office_phone=0x7f0a0018;
-        public static final int sync_menu=0x7f0a001d;
-        public static final int thought_label=0x7f0a001b;
+        public static final int row_office_phone=0x7f0a0019;
+        public static final int sync_menu=0x7f0a001e;
+        public static final int thought_label=0x7f0a001c;
         public static final int widget44=0x7f0a0007;
     }
     public static final class layout {
@@ -104,6 +105,7 @@ public final class R {
         public static final int list_by=0x7f070003;
         public static final int sync_all=0x7f070002;
         public static final int view_all=0x7f070001;
+        public static final int view_map=0x7f070004;
     }
     public static final class style {
         public static final int ButtonText=0x7f080002;

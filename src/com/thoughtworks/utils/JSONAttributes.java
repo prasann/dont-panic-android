@@ -49,6 +49,7 @@ public class JSONAttributes {
         public static String EMAIL = "email";
         public static String CITY_ID = "city_id";
         public static String COMPANY_ID = "company_id";
+        public static String MAP = "map";
     }
 
     public static class Place {

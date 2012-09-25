@@ -22,12 +22,24 @@ public class SplashScreenActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.splash);
-        boolean dataPresent = haveData();
-        if (isNetworkAvailable() && !dataPresent) {
+        boolean forceTrigger = forceTrigger();
+        boolean dataNotPresent = !haveData();
+        boolean networkAvailable = isNetworkAvailable();
+        if (networkAvailable && forceTrigger
+                || networkAvailable && dataNotPresent) {
             dataSyncThread().start();
         } else {
-            startHomeActivity(!dataPresent);
+            startHomeActivity(dataNotPresent);
         }
+    }
+
+    private boolean forceTrigger() {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String forceTrigger = (String) extras.get(Constants.FORCE_TRIGGER);
+            return (forceTrigger != null && forceTrigger.equals(Constants.FORCE_TRIGGER));
+        }
+        return false;
     }
 
     private Thread dataSyncThread() {

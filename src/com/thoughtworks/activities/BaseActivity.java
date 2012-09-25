@@ -86,6 +86,9 @@ public class BaseActivity extends Activity {
     private void startSplashScreen() {
         Intent intent = new Intent(this, SplashScreenActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.FORCE_TRIGGER, Constants.FORCE_TRIGGER);
+        intent.putExtras(bundle);
         startActivityForResult(intent, RESULT_FIRST_USER);
     }
 }

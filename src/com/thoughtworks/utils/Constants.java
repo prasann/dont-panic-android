@@ -16,4 +16,5 @@ public class Constants {
     public static final String PLACE_TYPE = "place_type";
 
     public static final String FAILED = "failed";
+    public static final String FORCE_TRIGGER = "force_trigger";
 }

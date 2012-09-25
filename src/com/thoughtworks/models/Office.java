@@ -18,8 +18,8 @@ public class Office {
     public static final String PHONE_NUMBERS = "phone_numbers";
     public static final String EMAIL = "email";
     public static final String COMPANY_ID = "company_id";
-    public static final String OFFICE_NAME_ALIAS = "office_name";
-    public static final String COMPANY_NAME_ALIAS = "company_name";
+    public static final String MAP_LINK = "map";
+
 
     private int id;
     private String name;
@@ -30,9 +30,10 @@ public class Office {
     private String email;
     private int cityId;
     private int companyId;
+    private String mapLink;
 
     public Office(int id, String name, String address, Double longitude,
-                  Double latitude, String phoneNumber, String email, int cityId, int companyId) {
+                  Double latitude, String mapLink, String phoneNumber, String email, int cityId, int companyId) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -42,6 +43,7 @@ public class Office {
         this.email = email;
         this.cityId = cityId;
         this.companyId = companyId;
+        this.mapLink = mapLink;
     }
 
     public Office(Cursor cursor) {
@@ -52,6 +54,7 @@ public class Office {
         this.longitude = cursor.getDouble(cursor.getColumnIndex(LONGITUDE));
         this.phoneNumber = cursor.getString(cursor.getColumnIndex(PHONE_NUMBERS));
         this.email = cursor.getString(cursor.getColumnIndex(EMAIL));
+        this.mapLink = cursor.getString(cursor.getColumnIndex(MAP_LINK));
     }
 
     public int getId() {
@@ -90,6 +93,10 @@ public class Office {
         return companyId;
     }
 
+    public String getMapLink() {
+        return mapLink;
+    }
+
     public static void reCreate(SQLiteDatabase db, List<Office> offices) {
         db.delete(TABLE_NAME, null, null);
         DatabaseUtils.InsertHelper insertHelper = new DatabaseUtils.InsertHelper(db, TABLE_NAME);
@@ -102,6 +109,7 @@ public class Office {
         int email_index = insertHelper.getColumnIndex(EMAIL);
         int cit_id_index = insertHelper.getColumnIndex(CITY_ID);
         int comp_id_index = insertHelper.getColumnIndex(COMPANY_ID);
+        int map_id_index = insertHelper.getColumnIndex(MAP_LINK);
         for (Office office : offices) {
             insertHelper.prepareForInsert();
             insertHelper.bind(id_index, office.getId());
@@ -113,11 +121,12 @@ public class Office {
             insertHelper.bind(phone_num_index, office.getPhoneNumber());
             insertHelper.bind(cit_id_index, office.getCityId());
             insertHelper.bind(comp_id_index, office.getCompanyId());
+            insertHelper.bind(map_id_index, office.getMapLink());
             insertHelper.execute();
         }
     }
 
     public static Cursor getAll(SQLiteDatabase mDb, int cityId) {
-        return mDb.query(TABLE_NAME, new String[]{ID, NAME, ADDRESS, LATITUDE, LONGITUDE, PHONE_NUMBERS, EMAIL}, CITY_ID + " = " + cityId, null, null, null, NAME);
+        return mDb.query(TABLE_NAME, new String[]{ID, NAME, ADDRESS, LATITUDE, LONGITUDE, PHONE_NUMBERS, EMAIL, MAP_LINK}, CITY_ID + " = " + cityId, null, null, null, NAME);
     }
 }

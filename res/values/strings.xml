@@ -3,4 +3,7 @@
     <string name="view_all">Choose Office</string>
     <string name="sync_all">Sync All</string>
     <string name="list_by">Countries</string>
+    <string name="view_map">
+        <a href='#'>View Map</a>
+    </string>
 </resources>

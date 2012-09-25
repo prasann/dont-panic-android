@@ -105,6 +105,7 @@ public class JSONParser {
                     (String) officesAttrs.get(JSONAttributes.Office.ADDRESS),
                     toDouble(officesAttrs, JSONAttributes.Office.LONGITUDE),
                     toDouble(officesAttrs, JSONAttributes.Office.LATITUDE),
+                    toString(officesAttrs, JSONAttributes.Office.MAP),
                     (String) officesAttrs.get(JSONAttributes.Office.PHONE_NUMBERS),
                     (String) officesAttrs.get(JSONAttributes.Office.EMAIL),
                     (Integer) officesAttrs.get(JSONAttributes.Office.CITY_ID),
@@ -138,6 +139,16 @@ public class JSONParser {
             val = (Double) attrs.get(value);
         } catch (Exception e) {
             Log.w("Double Conversion", "Error while converting : " + value);
+        }
+        return val;
+    }
+
+    private String toString(JSONObject attrs, String value) throws JSONException {
+        String val = "";
+        try {
+            val = (String) attrs.get(value);
+        } catch (Exception e) {
+            Log.w("String Conversion", "Error while converting : " + value);
         }
         return val;
     }

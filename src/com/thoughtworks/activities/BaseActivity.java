@@ -81,11 +81,9 @@ public class BaseActivity extends Activity {
             new SyncActivity(BaseActivity.this).sync();
             new Handler().postDelayed(new Runnable() {
                 public void run() {
-                    finish();
                     Intent intent = new Intent(context, SplashScreenActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivityForResult(intent, RESULT_FIRST_USER);
-                    finish();
                 }
             }, 2000);
         } else {

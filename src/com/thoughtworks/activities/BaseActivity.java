@@ -60,13 +60,15 @@ public class BaseActivity extends Activity {
     }
 
     private City getCityFromDB() {
-        Cursor cursor = new DBHelper().getACity(this);
+        DBHelper dbHelper = new DBHelper();
+        Cursor cursor = dbHelper.getACity(this);
         if (cursor == null || cursor.getCount() == 0) {
             return null;
         }
         cursor.moveToFirst();
         City city = new City(cursor);
         cursor.close();
+        dbHelper.close();
         return city;
     }
 

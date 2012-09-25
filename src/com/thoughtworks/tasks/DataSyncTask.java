@@ -106,5 +106,8 @@ public class DataSyncTask extends AsyncTask<String, String, String> {
         return content.toString();
     }
 
-
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+    }
 }

@@ -57,6 +57,7 @@ public class ListCitiesActivity extends BaseListActivity {
             cityList.add(new City(cursor));
         }
         cursor.close();
+        dbHelper.close();
         return cityList;
     }
 

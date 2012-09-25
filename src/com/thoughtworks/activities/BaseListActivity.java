@@ -29,7 +29,12 @@ public class BaseListActivity extends ListActivity {
         mActionBar = (ActionBar) findViewById(R.id.actionBar);
         mActionBar.setTitle(actionTitle);
         mActionBar.setHomeLogo(R.drawable.home, homeLogoListener());
-        mActionBar.addActionButton(getCity(), null);
+        mActionBar.addActionButton(getCity(), new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ListCitiesActivity.class);
+                startActivityForResult(intent, RESULT_FIRST_USER);
+            }
+        });
     }
 
     private View.OnClickListener homeLogoListener() {

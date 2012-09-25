@@ -45,12 +45,14 @@ public class OfficePlaceSummaryActivity extends BaseListActivity {
 
     private List<Place> getPlaces(String placeType) {
         int cityId = getCityPreference();
-        Cursor cursor = new DBHelper().getPlace(this, cityId, placeType);
+        DBHelper dbHelper = new DBHelper();
+        Cursor cursor = dbHelper.getPlace(this, cityId, placeType);
         List<Place> placeList = new ArrayList<Place>();
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             placeList.add(new Place(cursor));
         }
         cursor.close();
+        dbHelper.close();
         return placeList;
     }
 
@@ -75,12 +77,14 @@ public class OfficePlaceSummaryActivity extends BaseListActivity {
 
     private List<Office> getOffices() {
         int cityId = getCityPreference();
-        Cursor cursor = new DBHelper().getAllOffices(this, cityId);
+        DBHelper dbHelper = new DBHelper();
+        Cursor cursor = dbHelper.getAllOffices(this, cityId);
         List<Office> officeList = new ArrayList<Office>();
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             officeList.add(new Office(cursor));
         }
         cursor.close();
+        dbHelper.close();
         return officeList;
     }
 

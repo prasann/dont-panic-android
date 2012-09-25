@@ -2,6 +2,7 @@ package com.thoughtworks.database;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import com.thoughtworks.models.*;
 
 import java.util.List;
@@ -10,6 +11,8 @@ import java.util.Map;
 import static com.thoughtworks.utils.Constants.*;
 
 public class DBHelper {
+
+    private SQLiteDatabase mDb;
 
     public static void saveObjectMap(Context context, Map<String, Object> objectMap) {
         BaseDB db = new BaseDB();
@@ -27,37 +30,48 @@ public class DBHelper {
     public Cursor getACity(Context context) {
         BaseDB db = new BaseDB();
         db.open(context);
+        this.mDb = db.mDb;
         return City.getACity(db.mDb);
     }
 
     public Cursor getAllCities(Context context) {
         BaseDB db = new BaseDB();
         db.open(context);
+        this.mDb = db.mDb;
         return City.getAll(db.mDb);
     }
 
     public Cursor getAllOffices(Context context, int cityId) {
         BaseDB db = new BaseDB();
         db.open(context);
+        this.mDb = db.mDb;
         return Office.getAll(db.mDb, cityId);
     }
 
     public Cursor getPlaceTypes(Context context) {
         BaseDB db = new BaseDB();
         db.open(context);
+        this.mDb = db.mDb;
         return PlaceType.getAll(db.mDb);
     }
 
     public Cursor getAdministratorsBy(int cityId, Context context) {
         BaseDB db = new BaseDB();
         db.open(context);
+        this.mDb = db.mDb;
         return Administrator.getAll(db.mDb, cityId);
     }
 
     public Cursor getPlace(Context context, int cityId, String placeType) {
         BaseDB db = new BaseDB();
         db.open(context);
+        this.mDb = db.mDb;
         return Place.getPlace(db.mDb, cityId, placeType);
     }
+
+    public void close() {
+        this.mDb.close();
+    }
+
 
 }

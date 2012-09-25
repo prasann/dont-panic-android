@@ -42,12 +42,14 @@ public class AdminSummaryActivity extends BaseListActivity {
 
     private List<Administrator> getAdministrators() {
         int cityId = getCityPreference();
-        Cursor cursor = new DBHelper().getAdministratorsBy(cityId, this);
+        DBHelper dbHelper = new DBHelper();
+        Cursor cursor = dbHelper.getAdministratorsBy(cityId, this);
         List<Administrator> adminList = new ArrayList<Administrator>();
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             adminList.add(new Administrator(cursor));
         }
         cursor.close();
+        dbHelper.close();
         return adminList;
     }
 

@@ -8,14 +8,17 @@
             android:id="@+id/row_office_name"
             android:layout_width="fill_parent"
             android:textStyle="bold"
-            android:textSize="15dip"
+            android:textSize="16dip"
+            android:paddingBottom="4dip"
             android:layout_height="wrap_content"
             />
     <TextView
             android:id="@+id/row_office_address"
             android:layout_width="fill_parent"
             android:layout_weight="1"
-            android:textSize="13dip"
+            android:paddingBottom="4dip"
+            android:lineSpacingMultiplier="1.2"
+            android:textSize="14dip"
             android:layout_height="wrap_content"
             />
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -25,14 +28,14 @@
                   android:orientation="horizontal">
         <ImageView android:id="@+id/off_phone_icon"
                    android:layout_alignParentLeft="true" android:layout_width="wrap_content"
-                   android:layout_height="fill_parent" android:background="@drawable/phone"
+                   android:layout_height="wrap_content" android:background="@drawable/phone"
                    android:padding="0dip"/>
         <TextView
                 android:layout_toRightOf="@id/off_phone_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/row_office_phone"
-                android:textSize="12dip"
+                android:textSize="14dip"
                 android:autoLink="all"
                 />
     </LinearLayout>
@@ -43,14 +46,14 @@
                   android:orientation="horizontal">
         <ImageView android:id="@+id/off_mail_icon"
                    android:layout_alignParentLeft="true" android:layout_width="wrap_content"
-                   android:layout_height="fill_parent" android:background="@drawable/mail"
+                   android:layout_height="wrap_content" android:background="@drawable/mail"
                    android:padding="0dip"/>
         <TextView
                 android:layout_toRightOf="@id/off_mail_icon"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/row_office_email"
-                android:textSize="12dip"
+                android:textSize="14dip"
                 android:autoLink="all"
                 />
     </LinearLayout>

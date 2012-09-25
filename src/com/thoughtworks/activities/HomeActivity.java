@@ -67,8 +67,13 @@ public class HomeActivity extends BaseActivity {
     }
 
     private boolean hasData() {
-        Cursor allCities = new DBHelper().getAllCities(this);
-        return (allCities != null && allCities.getCount() > 0);
+        boolean status = false;
+        DBHelper dbHelper = new DBHelper();
+        Cursor allCities = dbHelper.getAllCities(this);
+        status = allCities.getCount() > 0;
+        allCities.close();
+        dbHelper.close();
+        return status;
     }
 
     private void cityButton() {
@@ -90,6 +95,7 @@ public class HomeActivity extends BaseActivity {
             placeTypeList.add(new PlaceType(cursor));
         }
         cursor.close();
+        dbHelper.close();
         return placeTypeList;
     }
 

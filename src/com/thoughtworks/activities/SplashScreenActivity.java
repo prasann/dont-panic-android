@@ -7,6 +7,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Window;
 import com.thoughtworks.R;
 import com.thoughtworks.tasks.DataSyncTask;
@@ -30,21 +32,27 @@ public class SplashScreenActivity extends Activity {
 
     private Thread dataSyncThread() {
         return new Thread() {
+            private Handler mHandler = new Handler(Looper.getMainLooper());
             AsyncTask<String, String, String> task;
             boolean status = true;
+
             @Override
             public void run() {
-                try {
-                    task = new DataSyncTask(SplashScreenActivity.this).execute(WEB_URL);
-                    synchronized (task) {
-                        task.wait();
+                mHandler.post(new Runnable() {
+                    public void run() {
+                        try {
+                            task = new DataSyncTask(SplashScreenActivity.this).execute(WEB_URL);
+                            synchronized (task) {
+                                task.wait();
+                            }
+                        } catch (InterruptedException e) {
+                            status = false;
+                            throw new Error(e);
+                        } finally {
+                            startHomeActivity(!status);
+                        }
                     }
-                } catch (InterruptedException e) {
-                    status = false;
-                    throw new Error(e);
-                } finally {
-                    startHomeActivity(!status);
-                }
+                });
             }
         };
     }

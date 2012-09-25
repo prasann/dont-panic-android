@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
@@ -75,11 +76,18 @@ public class BaseActivity extends Activity {
     }
 
     private void syncData() {
+        final Context context = this;
         if (isNetworkAvailable()) {
             new SyncActivity(BaseActivity.this).sync();
-            Intent intent = new Intent(this, SplashScreenActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivityForResult(intent, RESULT_FIRST_USER);
+            new Handler().postDelayed(new Runnable() {
+                public void run() {
+                    finish();
+                    Intent intent = new Intent(context, SplashScreenActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivityForResult(intent, RESULT_FIRST_USER);
+                    finish();
+                }
+            }, 2000);
         } else {
             Toast toast = Toast.makeText(BaseActivity.this, "You need data connection to Sync content", 15);
             toast.show();

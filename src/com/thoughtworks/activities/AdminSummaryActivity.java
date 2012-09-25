@@ -22,6 +22,7 @@ public class AdminSummaryActivity extends BaseListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.summary_listing);
+        setActionBar("Administrators");
         TextView emptyText = (TextView) findViewById(R.id.empty_text);
         emptyText.setText("No Administrators found.");
         listView();

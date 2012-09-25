@@ -1,6 +1,5 @@
 package com.thoughtworks.activities;
 
-import android.app.ListActivity;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -19,7 +18,7 @@ import java.util.List;
 import static com.thoughtworks.utils.Constants.CITY_ID_PREFS;
 import static com.thoughtworks.utils.Constants.PREFS_NAME;
 
-public class OfficePlaceSummaryActivity extends ListActivity {
+public class OfficePlaceSummaryActivity extends BaseListActivity {
     private OfficeListAdapter officeListAdapter;
     private PlaceListAdapter placeListAdapter;
 
@@ -27,7 +26,7 @@ public class OfficePlaceSummaryActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = getIntent().getExtras();
-        setContentView(R.layout.office_listing);
+        setContentView(R.layout.summary_listing);
         if (bundle == null) {
             officeView();
         } else {
@@ -37,7 +36,8 @@ public class OfficePlaceSummaryActivity extends ListActivity {
     }
 
     private void placeTypeView(String placeType) {
-        setEmptyListText("No Places found.");
+        setActionBar(placeType + " Information");
+        setEmptyListText("No " + placeType + " found.");
         List<Place> cityList = getPlaces(placeType);
         placeListAdapter = new PlaceListAdapter(this, R.layout.row_office, cityList);
         this.setListAdapter(placeListAdapter);
@@ -60,6 +60,7 @@ public class OfficePlaceSummaryActivity extends ListActivity {
     }
 
     private void officeView() {
+        setActionBar("Office Information");
         setEmptyListText("No Offices found.");
         List<Office> cityList = getOffices();
         officeListAdapter = new OfficeListAdapter(this, R.layout.row_office, cityList);

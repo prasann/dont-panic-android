@@ -4,6 +4,13 @@
               android:layout_height="fill_parent"
               android:weightSum="10"
               android:orientation="vertical">
+    <com.thoughtworks.widget.ActionBar
+            android:id="@+id/actionBar"
+            android:layout_width="fill_parent"
+            android:padding="2dip"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"/>
     <ListView
             android:id="@+id/android:list"
             android:layout_marginTop="20dip"

@@ -1,6 +1,5 @@
 package com.thoughtworks.activities;
 
-import android.app.ListActivity;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -16,13 +15,13 @@ import java.util.List;
 import static com.thoughtworks.utils.Constants.CITY_ID_PREFS;
 import static com.thoughtworks.utils.Constants.PREFS_NAME;
 
-public class AdminSummaryActivity extends ListActivity {
+public class AdminSummaryActivity extends BaseListActivity {
     private AdminListAdapter adminListAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.office_listing);
+        setContentView(R.layout.summary_listing);
         TextView emptyText = (TextView) findViewById(R.id.empty_text);
         emptyText.setText("No Administrators found.");
         listView();

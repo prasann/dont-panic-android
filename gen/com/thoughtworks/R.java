@@ -59,27 +59,21 @@ public final class R {
         public static final int city_label=0x7f0a000c;
         public static final int city_layout=0x7f0a000b;
         public static final int country_name=0x7f0a0006;
-        public static final int empty_text=0x7f0a000f;
+        public static final int empty_text=0x7f0a0019;
         public static final int gridview=0x7f0a000e;
         public static final int icon_image=0x7f0a0009;
         public static final int icon_text=0x7f0a000a;
-        public static final int row_admin_email=0x7f0a0018;
-        public static final int row_admin_name=0x7f0a0016;
-        public static final int row_admin_number=0x7f0a0017;
-        public static final int row_city_id=0x7f0a0019;
-        public static final int row_city_name=0x7f0a001a;
-        public static final int row_office_address=0x7f0a001c;
-        public static final int row_office_email=0x7f0a001e;
-        public static final int row_office_name=0x7f0a001b;
-        public static final int row_office_phone=0x7f0a001d;
-        public static final int sum_off_address=0x7f0a0011;
-        public static final int sum_off_email=0x7f0a0015;
-        public static final int sum_off_latitude=0x7f0a0013;
-        public static final int sum_off_longitude=0x7f0a0012;
-        public static final int sum_off_name=0x7f0a0010;
-        public static final int sum_off_phone=0x7f0a0014;
-        public static final int sync_menu=0x7f0a0020;
-        public static final int thought_label=0x7f0a001f;
+        public static final int row_admin_email=0x7f0a0011;
+        public static final int row_admin_name=0x7f0a000f;
+        public static final int row_admin_number=0x7f0a0010;
+        public static final int row_city_id=0x7f0a0012;
+        public static final int row_city_name=0x7f0a0013;
+        public static final int row_office_address=0x7f0a0015;
+        public static final int row_office_email=0x7f0a0017;
+        public static final int row_office_name=0x7f0a0014;
+        public static final int row_office_phone=0x7f0a0016;
+        public static final int sync_menu=0x7f0a001a;
+        public static final int thought_label=0x7f0a0018;
         public static final int widget44=0x7f0a0008;
     }
     public static final class layout {
@@ -92,12 +86,11 @@ public final class R {
         public static final int grid_item=0x7f030006;
         public static final int home=0x7f030007;
         public static final int nodata=0x7f030008;
-        public static final int office_listing=0x7f030009;
-        public static final int office_summary=0x7f03000a;
-        public static final int row_admin=0x7f03000b;
-        public static final int row_city=0x7f03000c;
-        public static final int row_office=0x7f03000d;
-        public static final int splash=0x7f03000e;
+        public static final int row_admin=0x7f030009;
+        public static final int row_city=0x7f03000a;
+        public static final int row_office=0x7f03000b;
+        public static final int splash=0x7f03000c;
+        public static final int summary_listing=0x7f03000d;
     }
     public static final class menu {
         public static final int sync_menu=0x7f090000;

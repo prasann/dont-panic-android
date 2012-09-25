@@ -1,6 +1,8 @@
 Feature: Home feature
 
   Scenario: I can access different component of app
+    When I press "Update"
+    
     When I press "Offices"
     Then I see "TW GGN"
     Then I see "6767676"

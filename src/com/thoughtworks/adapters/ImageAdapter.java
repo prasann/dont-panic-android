@@ -11,18 +11,15 @@ import android.widget.TextView;
 import com.thoughtworks.R;
 import com.thoughtworks.models.PlaceType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
     private List<PlaceType> placeTypes;
-    private static int counter;
 
     public ImageAdapter(Context c, List<PlaceType> placeTypes) {
         mContext = c;
         this.placeTypes = placeTypes;
-        counter = 0;
     }
 
     public int getCount() {
@@ -40,7 +37,7 @@ public class ImageAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v;
         if (convertView == null) {
-            switch (counter) {
+            switch (position) {
                 case 0:
                     v = setImageText("Offices", R.drawable.offices);
                     break;
@@ -48,10 +45,9 @@ public class ImageAdapter extends BaseAdapter {
                     v = setImageText("Admins", R.drawable.admins);
                     break;
                 default:
-                    String name = placeTypes.get(counter - 2).getName();
+                    String name = placeTypes.get(position - 2).getName();
                     v = setImageText(name, getResources(name));
             }
-            counter++;
         } else {
             v = convertView;
         }

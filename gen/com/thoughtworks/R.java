@@ -41,11 +41,13 @@ public final class R {
         public static final int home=0x7f020009;
         public static final int ic_launcher=0x7f02000a;
         public static final int ic_menu_sync=0x7f02000b;
-        public static final int malls=0x7f02000c;
-        public static final int offices=0x7f02000d;
-        public static final int panic=0x7f02000e;
-        public static final int pubs=0x7f02000f;
-        public static final int restaurants=0x7f020010;
+        public static final int mail=0x7f02000c;
+        public static final int malls=0x7f02000d;
+        public static final int offices=0x7f02000e;
+        public static final int panic=0x7f02000f;
+        public static final int phone=0x7f020010;
+        public static final int pubs=0x7f020011;
+        public static final int restaurants=0x7f020012;
     }
     public static final class id {
         public static final int actionBar=0x7f0a0007;
@@ -59,21 +61,23 @@ public final class R {
         public static final int city_label=0x7f0a000c;
         public static final int city_layout=0x7f0a000b;
         public static final int country_name=0x7f0a0006;
-        public static final int empty_text=0x7f0a0019;
+        public static final int empty_text=0x7f0a001b;
         public static final int gridview=0x7f0a000e;
         public static final int icon_image=0x7f0a0009;
         public static final int icon_text=0x7f0a000a;
+        public static final int off_mail_icon=0x7f0a0018;
+        public static final int off_phone_icon=0x7f0a0016;
         public static final int row_admin_email=0x7f0a0011;
         public static final int row_admin_name=0x7f0a000f;
         public static final int row_admin_number=0x7f0a0010;
         public static final int row_city_id=0x7f0a0012;
         public static final int row_city_name=0x7f0a0013;
         public static final int row_office_address=0x7f0a0015;
-        public static final int row_office_email=0x7f0a0017;
+        public static final int row_office_email=0x7f0a0019;
         public static final int row_office_name=0x7f0a0014;
-        public static final int row_office_phone=0x7f0a0016;
-        public static final int sync_menu=0x7f0a001a;
-        public static final int thought_label=0x7f0a0018;
+        public static final int row_office_phone=0x7f0a0017;
+        public static final int sync_menu=0x7f0a001c;
+        public static final int thought_label=0x7f0a001a;
         public static final int widget44=0x7f0a0008;
     }
     public static final class layout {

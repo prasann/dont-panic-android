@@ -50,6 +50,7 @@ CREATE TABLE places (
 	longitude numeric(0),
 	latitude numeric(0),
 	phone_numbers varchar(255),
+	map varchar(255),
 	email varchar(255),
 	place_type_id integer,
 	city_id integer,

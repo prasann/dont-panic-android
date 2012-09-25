@@ -17,6 +17,7 @@ public class Place {
     public static final String PHONE_NUMBERS = "phone_numbers";
     public static final String EMAIL = "email";
     public static final String CITY_ID = "city_id";
+    public static final String MAP_LINK = "map";
 
     private int id;
     private String name;
@@ -28,9 +29,10 @@ public class Place {
     private String email;
     private int cityId;
     private int placeTypeId;
+    private String mapLink;
 
     public Place(int id, String name, String description, String address, Double longitude, Double latitude,
-                 String phoneNumber, String email, int placeTypeId, int cityId) {
+                 String phoneNumber, String email, String mapLink, int placeTypeId, int cityId) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -41,6 +43,7 @@ public class Place {
         this.placeTypeId = placeTypeId;
         this.cityId = cityId;
         this.description = description;
+        this.mapLink = mapLink;
     }
 
     public Place(Cursor cursor) {
@@ -51,6 +54,7 @@ public class Place {
         this.longitude = cursor.getDouble(cursor.getColumnIndex(LONGITUDE));
         this.phoneNumber = cursor.getString(cursor.getColumnIndex(PHONE_NUMBERS));
         this.email = cursor.getString(cursor.getColumnIndex(EMAIL));
+        this.mapLink = cursor.getString(cursor.getColumnIndex(MAP_LINK));
     }
 
     public int getId() {
@@ -93,6 +97,10 @@ public class Place {
         return placeTypeId;
     }
 
+    public String getMapLink() {
+        return mapLink;
+    }
+
     public static void reCreate(SQLiteDatabase db, List<Place> places) {
         db.delete(TABLE_NAME, null, null);
         DatabaseUtils.InsertHelper insertHelper = new DatabaseUtils.InsertHelper(db, TABLE_NAME);
@@ -106,18 +114,20 @@ public class Place {
         int cit_id_index = insertHelper.getColumnIndex(CITY_ID);
         int desc_index = insertHelper.getColumnIndex("description");
         int place_type_index = insertHelper.getColumnIndex("place_type_id");
-        for (Place office : places) {
+        int map_index = insertHelper.getColumnIndex(MAP_LINK);
+        for (Place place : places) {
             insertHelper.prepareForInsert();
-            insertHelper.bind(id_index, office.getId());
-            insertHelper.bind(name_index, office.getName());
-            insertHelper.bind(desc_index, office.getDescription());
-            insertHelper.bind(lat_index, office.getLatitude());
-            insertHelper.bind(long_index, office.getLongitude());
-            insertHelper.bind(address_index, office.getAddress());
-            insertHelper.bind(email_index, office.getEmail());
-            insertHelper.bind(phone_num_index, office.getPhoneNumber());
-            insertHelper.bind(cit_id_index, office.getCityId());
-            insertHelper.bind(place_type_index, office.getPlaceTypeId());
+            insertHelper.bind(id_index, place.getId());
+            insertHelper.bind(name_index, place.getName());
+            insertHelper.bind(desc_index, place.getDescription());
+            insertHelper.bind(lat_index, place.getLatitude());
+            insertHelper.bind(long_index, place.getLongitude());
+            insertHelper.bind(address_index, place.getAddress());
+            insertHelper.bind(email_index, place.getEmail());
+            insertHelper.bind(phone_num_index, place.getPhoneNumber());
+            insertHelper.bind(cit_id_index, place.getCityId());
+            insertHelper.bind(place_type_index, place.getPlaceTypeId());
+            insertHelper.bind(map_index, place.getMapLink());
             insertHelper.execute();
         }
     }

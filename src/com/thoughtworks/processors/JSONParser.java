@@ -127,6 +127,7 @@ public class JSONParser {
                     toDouble(placesAttrs, JSONAttributes.Place.LATITUDE),
                     (String) placesAttrs.get(JSONAttributes.Place.PHONE_NUMBERS),
                     (String) placesAttrs.get(JSONAttributes.Place.EMAIL),
+                    toString(placesAttrs, JSONAttributes.Office.MAP),
                     (Integer) placesAttrs.get(JSONAttributes.Place.PLACE_TYPE_ID),
                     (Integer) placesAttrs.get(JSONAttributes.Place.CITY_ID)));
         }

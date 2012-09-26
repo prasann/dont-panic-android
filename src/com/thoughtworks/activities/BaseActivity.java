@@ -10,10 +10,12 @@ import android.view.Window;
 import com.thoughtworks.R;
 import com.thoughtworks.database.DBHelper;
 import com.thoughtworks.models.City;
+import com.thoughtworks.utils.ActionBarUtils;
 import com.thoughtworks.utils.Constants;
 import com.thoughtworks.widget.ActionBar;
 
 import static com.thoughtworks.utils.Constants.CITY_PREFS;
+import static com.thoughtworks.utils.Constants.EMPTY_STRING;
 import static com.thoughtworks.utils.Constants.PREFS_NAME;
 
 public class BaseActivity extends Activity {
@@ -37,14 +39,11 @@ public class BaseActivity extends Activity {
     }
 
     public String getCity() {
-        String city = retrieveFromSharedPreference();
-        if (city.equals("")) {
-            updateSharedPreference(getCityFromDB());
-        }
-        return retrieveFromSharedPreference();
+        ActionBarUtils actionBarUtils = new ActionBarUtils(this);
+        return actionBarUtils.getCity();
     }
 
-    public boolean haveData() {
+    public boolean hasData() {
         boolean status;
         DBHelper dbHelper = new DBHelper();
         Cursor allCities = dbHelper.getAllCities(this);
@@ -54,34 +53,6 @@ public class BaseActivity extends Activity {
         return status;
     }
 
-
-    private void updateSharedPreference(City city) {
-        if (city == null)
-            return;
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        SharedPreferences.Editor edit = settings.edit();
-        edit.putString(Constants.CITY_PREFS, city.getName());
-        edit.putInt(Constants.CITY_ID_PREFS, city.getId());
-        edit.commit();
-    }
-
-    private String retrieveFromSharedPreference() {
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        return settings.getString(CITY_PREFS, "");
-    }
-
-    private City getCityFromDB() {
-        DBHelper dbHelper = new DBHelper();
-        Cursor cursor = dbHelper.getACity(this);
-        if (cursor == null || cursor.getCount() == 0) {
-            return null;
-        }
-        cursor.moveToFirst();
-        City city = new City(cursor);
-        cursor.close();
-        dbHelper.close();
-        return city;
-    }
 
     private void startSplashScreen() {
         Intent intent = new Intent(this, SplashScreenActivity.class);

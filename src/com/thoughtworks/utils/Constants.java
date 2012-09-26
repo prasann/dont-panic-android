@@ -17,4 +17,5 @@ public class Constants {
 
     public static final String FAILED = "failed";
     public static final String FORCE_TRIGGER = "force_trigger";
+    public static final String EMPTY_STRING = "";
 }

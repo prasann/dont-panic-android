@@ -23,23 +23,13 @@ public class SplashScreenActivity extends BaseActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.splash);
         boolean forceTrigger = forceTrigger();
-        boolean dataNotPresent = !haveData();
+        boolean dataNotPresent = !hasData();
         boolean networkAvailable = isNetworkAvailable();
-        if (networkAvailable && forceTrigger
-                || networkAvailable && dataNotPresent) {
+        if (networkAvailable && (forceTrigger || dataNotPresent)) {
             dataSyncThread().start();
         } else {
             startHomeActivity(dataNotPresent);
         }
-    }
-
-    private boolean forceTrigger() {
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String forceTrigger = (String) extras.get(Constants.FORCE_TRIGGER);
-            return (forceTrigger != null && forceTrigger.equals(Constants.FORCE_TRIGGER));
-        }
-        return false;
     }
 
     private Thread dataSyncThread() {
@@ -67,6 +57,15 @@ public class SplashScreenActivity extends BaseActivity {
                 });
             }
         };
+    }
+
+    private boolean forceTrigger() {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String forceTrigger = (String) extras.get(Constants.FORCE_TRIGGER);
+            return (forceTrigger != null && forceTrigger.equals(Constants.FORCE_TRIGGER));
+        }
+        return false;
     }
 
     private void startHomeActivity(boolean failed) {

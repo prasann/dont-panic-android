@@ -24,7 +24,7 @@ public class HomeActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dataSyncCheck();
-        if (haveData()) {
+        if (hasData()) {
             renderHomePage();
         } else {
             renderNoDataPage();

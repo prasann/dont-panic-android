@@ -16,15 +16,18 @@ import static com.thoughtworks.utils.Constants.CITY_ID_PREFS;
 import static com.thoughtworks.utils.Constants.PREFS_NAME;
 
 public class AdminSummaryActivity extends BaseListActivity {
+    private static final String ACTION_TITLE = "Administrators";
+    private static final String NO_ADMINISTRATORS_FOUND = "No Administrators found.";
+
     private AdminListAdapter adminListAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.summary_listing);
-        setActionBar("Administrators");
+        setActionBar(ACTION_TITLE);
         TextView emptyText = (TextView) findViewById(R.id.empty_text);
-        emptyText.setText("No Administrators found.");
+        emptyText.setText(NO_ADMINISTRATORS_FOUND);
         listView();
     }
 
@@ -52,6 +55,4 @@ public class AdminSummaryActivity extends BaseListActivity {
         dbHelper.close();
         return adminList;
     }
-
-
 }

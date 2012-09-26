@@ -12,6 +12,7 @@ import com.thoughtworks.adapters.PlaceListAdapter;
 import com.thoughtworks.database.DBHelper;
 import com.thoughtworks.models.Office;
 import com.thoughtworks.models.Place;
+import com.thoughtworks.utils.ActionBarUtils;
 import com.thoughtworks.utils.Constants;
 
 import java.util.ArrayList;
@@ -21,6 +22,9 @@ import static com.thoughtworks.utils.Constants.CITY_ID_PREFS;
 import static com.thoughtworks.utils.Constants.PREFS_NAME;
 
 public class OfficePlaceSummaryActivity extends BaseListActivity {
+    private static final String ACTION_TITLE = "Office Information";
+    private static final String NO_OFFICES_FOUND = "No Offices found.";
+
     private OfficeListAdapter officeListAdapter;
     private PlaceListAdapter placeListAdapter;
 
@@ -69,8 +73,8 @@ public class OfficePlaceSummaryActivity extends BaseListActivity {
     }
 
     private void officeView() {
-        setActionBar("Office Information");
-        setEmptyListText("No Offices found.");
+        setActionBar(ACTION_TITLE);
+        setEmptyListText(NO_OFFICES_FOUND);
         List<Office> cityList = getOffices();
         officeListAdapter = new OfficeListAdapter(this, R.layout.row_officeplace, cityList);
         this.setListAdapter(officeListAdapter);

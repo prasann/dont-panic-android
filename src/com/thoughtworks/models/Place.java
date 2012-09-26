@@ -18,6 +18,8 @@ public class Place {
     public static final String EMAIL = "email";
     public static final String CITY_ID = "city_id";
     public static final String MAP_LINK = "map";
+    public static final String DESCRIPTION = "description";
+    public static final String PLACE_TYPE_ID = "place_type_id";
 
     private int id;
     private String name;
@@ -112,8 +114,8 @@ public class Place {
         int phone_num_index = insertHelper.getColumnIndex(PHONE_NUMBERS);
         int email_index = insertHelper.getColumnIndex(EMAIL);
         int cit_id_index = insertHelper.getColumnIndex(CITY_ID);
-        int desc_index = insertHelper.getColumnIndex("description");
-        int place_type_index = insertHelper.getColumnIndex("place_type_id");
+        int desc_index = insertHelper.getColumnIndex(DESCRIPTION);
+        int place_type_index = insertHelper.getColumnIndex(PLACE_TYPE_ID);
         int map_index = insertHelper.getColumnIndex(MAP_LINK);
         for (Place place : places) {
             insertHelper.prepareForInsert();

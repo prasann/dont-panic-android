@@ -12,6 +12,7 @@ public class Administrator {
     public static final String NAME = "name";
     public static final String PHONE_NUMBERS = "phone_numbers";
     public static final String EMAIL = "email";
+    public static final String OFFICE_ID = "office_id";
 
     private int id;
     private String name;
@@ -61,7 +62,7 @@ public class Administrator {
         int name_index = insertHelper.getColumnIndex(NAME);
         int phone_num_index = insertHelper.getColumnIndex(PHONE_NUMBERS);
         int email_index = insertHelper.getColumnIndex(EMAIL);
-        int office_id_index = insertHelper.getColumnIndex("office_id");
+        int office_id_index = insertHelper.getColumnIndex(OFFICE_ID);
         for (Administrator administrator : administrators) {
             insertHelper.prepareForInsert();
             insertHelper.bind(id_index, administrator.getId());

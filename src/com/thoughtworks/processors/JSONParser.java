@@ -16,6 +16,8 @@ import static com.thoughtworks.utils.Constants.*;
 
 public class JSONParser {
 
+    public static final String TAG = "JSONParser";
+
     public static Map<String, Object> parse(String json) {
         Map<String, Object> objectMap = new HashMap<String, Object>();
         JSONParser jsonParser = new JSONParser();
@@ -29,7 +31,8 @@ public class JSONParser {
             objectMap.put(OBJ_MAP_PLACES, jsonParser.places(jsonObject));
             objectMap.put(OBJ_MAP_PLACE_TYPES, jsonParser.placeTypes(jsonObject));
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Exception while Parsing");
+            return null;
         }
         return objectMap;
     }

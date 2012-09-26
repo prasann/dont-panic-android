@@ -15,7 +15,6 @@ import com.thoughtworks.utils.Constants;
 
 public class SplashScreenActivity extends BaseActivity {
 
-    private static final String WEB_URL = "http://dont-panic.herokuapp.com/data.json";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,7 @@ public class SplashScreenActivity extends BaseActivity {
                 mHandler.post(new Runnable() {
                     public void run() {
                         try {
-                            task = new DataSyncTask(SplashScreenActivity.this).execute(WEB_URL);
+                            task = new DataSyncTask(SplashScreenActivity.this).execute();
                             synchronized (task) {
                                 task.wait();
                             }

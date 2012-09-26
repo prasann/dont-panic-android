@@ -5,34 +5,44 @@ import android.os.AsyncTask;
 import android.util.Log;
 import com.thoughtworks.database.DBHelper;
 import com.thoughtworks.processors.JSONParser;
+import com.thoughtworks.utils.Constants;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
 
+import static com.thoughtworks.utils.Constants.EMPTY_STRING;
 import static java.net.HttpURLConnection.HTTP_OK;
 
 public class DataSyncTask extends AsyncTask<String, String, String> {
 
+    public static final String SUCCESS = "Success";
+    public static final String FAILURE = "0";
     private String TAG = "DataSyncTask";
-    private String EMPTY_STRING = "";
     private Context context;
+    private static final String WEB_URL = "http://dont-panic.herokuapp.com/data.json";
+
 
     @Override
     protected String doInBackground(String... uri) {
         int status;
         synchronized (this) {
-            Log.v(TAG, "Starting task");
-            String json = downloadData(uri[0]);
-            Log.v(TAG, "JSOn Done");
+            String json = downloadData(WEB_URL);
+            if (json.equals(EMPTY_STRING)) return error();
             Map<String, Object> objectMap = parseJSON(json);
-            Log.v(TAG, "Map Done");
+            if (objectMap == null) return error();
             status = saveData(objectMap);
-            Log.v(TAG, "Save Done");
+            if (status == 0) return error();
             this.notify();
         }
-        return String.valueOf(status);
+        return SUCCESS;
+    }
+
+    private String error() {
+        Log.e(TAG, "Error while syncing data");
+        this.notify();
+        return FAILURE;
     }
 
     public DataSyncTask(Context context) {

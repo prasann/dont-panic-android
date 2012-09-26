@@ -66,21 +66,11 @@ public class ActionBar extends RelativeLayout {
         mActionIconContainer.addView(view, mActionIconContainer.getChildCount());
     }
 
-    public boolean removeActionIconAt(int index) {
-        int count = mActionIconContainer.getChildCount();
-        if (count > 0 && index >= 0 && index < count) {
-            mActionIconContainer.removeViewAt(index);
-            return true;
-        }
-        return false;
-    }
-
     public boolean isProgressBarVisible() {
         return mProgress.getVisibility() == View.VISIBLE;
     }
 
-
-    private void setProgressBarVisibility(int visibility) {
+    public void setProgressBarVisibility(int visibility) {
         mProgress.setVisibility(visibility);
     }
 }

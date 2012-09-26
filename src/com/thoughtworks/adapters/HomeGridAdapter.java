@@ -13,11 +13,11 @@ import com.thoughtworks.models.PlaceType;
 
 import java.util.List;
 
-public class ImageAdapter extends BaseAdapter {
+public class HomeGridAdapter extends BaseAdapter {
     private Context mContext;
     private List<PlaceType> placeTypes;
 
-    public ImageAdapter(Context c, List<PlaceType> placeTypes) {
+    public HomeGridAdapter(Context c, List<PlaceType> placeTypes) {
         mContext = c;
         this.placeTypes = placeTypes;
     }

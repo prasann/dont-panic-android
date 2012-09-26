@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 import com.thoughtworks.R;
-import com.thoughtworks.adapters.ImageAdapter;
+import com.thoughtworks.adapters.HomeGridAdapter;
 import com.thoughtworks.database.DBHelper;
 import com.thoughtworks.models.PlaceType;
 import com.thoughtworks.utils.Constants;
@@ -41,7 +41,7 @@ public class HomeActivity extends BaseActivity {
         setActionBar();
         cityButton();
         GridView gridview = (GridView) findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(this, getPlaceTypes()));
+        gridview.setAdapter(new HomeGridAdapter(this, getPlaceTypes()));
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 switch (position) {

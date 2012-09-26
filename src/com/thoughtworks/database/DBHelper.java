@@ -28,44 +28,39 @@ public class DBHelper {
     }
 
     public Cursor getACity(Context context) {
-        BaseDB db = new BaseDB();
-        db.open(context);
-        this.mDb = db.mDb;
+        BaseDB db = baseDB(context);
         return City.getACity(db.mDb);
     }
 
     public Cursor getAllCities(Context context) {
-        BaseDB db = new BaseDB();
-        db.open(context);
-        this.mDb = db.mDb;
+        BaseDB db = baseDB(context);
         return City.getAll(db.mDb);
     }
 
     public Cursor getAllOffices(Context context, int cityId) {
-        BaseDB db = new BaseDB();
-        db.open(context);
-        this.mDb = db.mDb;
+        BaseDB db = baseDB(context);
         return Office.getAll(db.mDb, cityId);
     }
 
     public Cursor getPlaceTypes(Context context) {
-        BaseDB db = new BaseDB();
-        db.open(context);
-        this.mDb = db.mDb;
+        BaseDB db = baseDB(context);
         return PlaceType.getAll(db.mDb);
     }
 
     public Cursor getAdministratorsBy(int cityId, Context context) {
-        BaseDB db = new BaseDB();
-        db.open(context);
-        this.mDb = db.mDb;
+        BaseDB db = baseDB(context);
         return Administrator.getAll(db.mDb, cityId);
     }
 
-    public Cursor getPlace(Context context, int cityId, String placeType) {
+    private BaseDB baseDB(Context context) {
         BaseDB db = new BaseDB();
         db.open(context);
         this.mDb = db.mDb;
+        return db;
+    }
+
+    public Cursor getPlace(Context context, int cityId, String placeType) {
+        BaseDB db = baseDB(context);
         return Place.getPlace(db.mDb, cityId, placeType);
     }
 
